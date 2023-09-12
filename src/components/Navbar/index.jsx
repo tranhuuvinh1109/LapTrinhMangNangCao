@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/images/icon.png'
 
 const Navbar = () => {
 	// const [activeItem, setActiveItem] = useState('Dashboard'); // Initialize with the default active item
@@ -13,7 +14,7 @@ const Navbar = () => {
 		<nav>
 			<div className="navbar">
 				<i className='bx bx-menu'></i>
-				<div className="logo"><Link to='/'>CodingLab</Link></div>
+				<div className="logo"><Link to='/'><img src={ logo } className='w-10' alt='logo' /></Link></div>
 				<div className="nav-links">
 					<div className="sidebar-logo">
 						<span className="logo-name">CodingLab</span>
