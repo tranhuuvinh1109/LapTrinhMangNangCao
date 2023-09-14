@@ -23,23 +23,17 @@ const Navbar = () => {
 					<ul className="links">
 						<li><Link to='/' className='active'>HOME</Link></li>
 						<li>
-							<span>HTML & CSS</span>
-							<i className='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-							<ul className="htmlCss-sub-menu sub-menu">
-								<li><Link to='/'>Web Design</Link></li>
-								<li><Link to='/'>Login Forms</Link></li>
-								<li><Link to='/'>Card Design</Link></li>
-							</ul>
+							<Link to='/user/dashboard'>Dashboard User</Link>
 						</li>
 						<li>
-							<span>JAVASCRIPT</span>
-							<i className='bx bxs-chevron-down js-arrow arrow '></i>
+							<Link to='/admin/dashboard'>Dashboard Admin</Link>
+							{/* <i className='bx bxs-chevron-down js-arrow arrow '></i>
 							<ul className="js-sub-menu sub-menu">
 								<li><Link to='/'>Dynamic Clock</Link></li>
 								<li><Link to='/'>Form Validation</Link></li>
 								<li><Link to='/'>Card Slider</Link></li>
 								<li><Link to='/'>Complete Website</Link></li>
-							</ul>
+							</ul> */}
 						</li>
 						<li><span>ABOUT US</span></li>
 						<li><Link to='auth'>Login</Link></li>

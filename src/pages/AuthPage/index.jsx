@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import './AuthPage.css';
 import { Link } from 'react-router-dom';
+import authAPI from '../../api/authAPI';
 
 const AuthPage = () => {
 	const [stateAuth, setStateAuth] = useState('login');
+	const [data, setData] = useState({
+		username: '',
+		password: ''
+	});
 
 	const toggleAuth = () => {
 		setStateAuth(stateAuth === 'login' ? 'register' : 'login');
 	};
+
+	const handleChangeInput = (e) => {
+		e.preventDefault();
+		setData({ ...data, [e.target.name]: e.target.value });
+	}
+
+	const handleLogin = async () => {
+		const res = await authAPI.login(data)
+		console.log('---', res);
+	}
+
+
 
 	return (
 		<section className="login">
@@ -25,11 +42,11 @@ const AuthPage = () => {
 								</Link>
 							</div>
 							<div className="contact">
-								<form action="">
+								<form >
 									<h3>SIGN IN</h3>
-									<input type="text" placeholder="USERNAME" />
-									<input type="text" placeholder="PASSWORD" />
-									<button className="submit">LET'S GO</button>
+									<input name='username' onChange={ handleChangeInput } value={ data.username } type="text" placeholder="USERNAME" />
+									<input name='password' onChange={ handleChangeInput } value={ data.password } type="text" placeholder="PASSWORD" />
+									<button className="submit" onClick={ handleLogin }>LET'S GO</button>
 									<p className="py-4">
 										Or <span className='text-sky-500 font-medium hover:cursor-pointer underline' onClick={ toggleAuth }>create a new account</span>
 									</p>

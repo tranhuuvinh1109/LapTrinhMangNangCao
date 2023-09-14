@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { AuthPage, HomePage, LayoutPage } from './pages';
+import { AuthPage, DashboardAdmin, DashboardUser, HomePage, LayoutPage } from './pages';
 
 function App () {
   return (
@@ -10,6 +10,8 @@ function App () {
         <Route path='/auth' element={<AuthPage />} />
         <Route path='/' element={<LayoutPage />}>
           <Route index element={<HomePage />} />
+          <Route path='/user/dashboard' element={<DashboardUser />} />
+          <Route path='/admin/dashboard' element={<DashboardAdmin />} />
         </Route>
       </Routes>
     </div>
