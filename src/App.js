@@ -1,18 +1,20 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { AuthPage, DashboardAdmin, DashboardUser, HomePage, LayoutPage } from './pages';
+import { LayoutAdmin, AuthPage, DashboardAdmin, DashboardUser, LayoutDefault, HomePage } from './pages';
 
 function App () {
   return (
     <div className="App">
       <Routes>
-        <Route path='/auth' element={<AuthPage />} />
-        <Route path='/' element={<LayoutPage />}>
+        <Route path='/' element={<LayoutDefault />}>
           <Route index element={<HomePage />} />
           <Route path='/user/dashboard' element={<DashboardUser />} />
-          <Route path='/admin/dashboard' element={<DashboardAdmin />} />
         </Route>
+        <Route path='/admin' element={<LayoutAdmin />}>
+          <Route path='dashboard' element={<DashboardAdmin />} />
+        </Route>
+        <Route path='/auth' element={<AuthPage />} />
       </Routes>
     </div>
   );

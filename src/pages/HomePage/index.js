@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChooseFile } from '../components';
+import { ChooseFile } from '../../components';
+import './HomePage.css'
 
 
 const HomePage = () => {
