@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/icon.png'
+import { APP_CONTEXT } from '../../App';
+import AvatarPopover from '../AvatarPopover';
+
+
 
 const Navbar = () => {
+	const context = useContext(APP_CONTEXT)
 	// const [activeItem, setActiveItem] = useState('Dashboard'); // Initialize with the default active item
 
 	// const handleItemClick = (itemName) => {
@@ -27,16 +32,18 @@ const Navbar = () => {
 						</li>
 						<li>
 							<Link to='/admin/dashboard'>Dashboard Admin</Link>
-							{/* <i className='bx bxs-chevron-down js-arrow arrow '></i>
-							<ul className="js-sub-menu sub-menu">
-								<li><Link to='/'>Dynamic Clock</Link></li>
-								<li><Link to='/'>Form Validation</Link></li>
-								<li><Link to='/'>Card Slider</Link></li>
-								<li><Link to='/'>Complete Website</Link></li>
-							</ul> */}
 						</li>
 						<li><span>ABOUT US</span></li>
-						<li><Link to='auth'>Login</Link></li>
+						{
+							context?.user?.email ? <li>
+								<div>
+									<AvatarPopover user={ context.user } />
+								</div>
+							</li>
+								:
+								<li><Link to='auth'>Login</Link></li>
+						}
+
 					</ul>
 				</div>
 				<div className="search-box">
