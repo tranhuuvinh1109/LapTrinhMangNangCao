@@ -1,15 +1,12 @@
-import React from 'react'
-import './DashboardAdmin.css'
-
+import React from "react";
+import "./DashboardAdmin.css";
 
 const DashboardAdmin = () => {
-	return (
-		<div>
-			<h1>
-				DashboardAdmin
-			</h1>
-		</div>
-	)
-}
+  return (
+    <h1>
+      aaaa
+    </h1>
+  )
+};
 
-export default DashboardAdmin
+export default DashboardAdmin;
