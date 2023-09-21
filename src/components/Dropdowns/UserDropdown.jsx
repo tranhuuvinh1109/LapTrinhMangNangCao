@@ -20,24 +20,24 @@ const UserDropdown = () => {
       <a
         className="text-blueGray-500 block"
         href="#pablo"
-        ref={btnDropdownRef}
-        onClick={(e) => {
+        ref={ btnDropdownRef }
+        onClick={ (e) => {
           e.preventDefault();
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-        }}
+        } }
       >
         <div className="items-center flex">
           <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
             <img
               alt="..."
               className="w-full rounded-full align-middle border-none shadow-lg"
-              src="https://bolavip.com/__export/1634404121904/sites/bolavip/img/2021/10/16/cristiano-ronaldo-capa.jpg_1159711837.jpg"
+              src="https://www.nzherald.co.nz/resizer/qpDIxoq6Wa_9A0yNMUszcfAhWxs=/576x613/smart/filters:quality(70)/cloudfront-ap-southeast-2.images.arcpublishing.com/nzme/CS4OIDWIJBG3LO6JHVUNQICGOQ.jpg"
             />
           </span>
         </div>
       </a>
       <div
-        ref={popoverDropdownRef}
+        ref={ popoverDropdownRef }
         className={
           (dropdownPopoverShow ? "block " : "hidden ") +
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
@@ -48,7 +48,7 @@ const UserDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={ (e) => e.preventDefault() }
         >
           Action
         </a>
@@ -57,7 +57,7 @@ const UserDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={ (e) => e.preventDefault() }
         >
           Another action
         </a>
@@ -66,7 +66,7 @@ const UserDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={ (e) => e.preventDefault() }
         >
           Something else here
         </a>
@@ -76,7 +76,7 @@ const UserDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={ (e) => e.preventDefault() }
         >
           Seprated link
         </a>
