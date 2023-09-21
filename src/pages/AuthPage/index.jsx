@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './AuthPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authAPI from '../../api/authAPI';
+import { toast } from 'react-hot-toast'
+import { APP_CONTEXT } from '../../App';
 
 const AuthPage = () => {
+	const navigate = useNavigate()
+	const context = useContext(APP_CONTEXT)
 	const [stateAuth, setStateAuth] = useState('login');
 	const [data, setData] = useState({
-		username: '',
+		email: '',
 		password: ''
 	});
 
@@ -19,9 +23,21 @@ const AuthPage = () => {
 		setData({ ...data, [e.target.name]: e.target.value });
 	}
 
-	const handleLogin = async () => {
+	// const handleLogin = async () => {
+	// 	const res = await authAPI.login(data)
+	// 	console.log('---', res);
+	// }
+
+	const handleSubmmit = async (e) => {
+		e.preventDefault()
 		const res = await authAPI.login(data)
-		console.log('---', res);
+		if (res.data.status === 200) {
+			context.setUser(res.data.data.user)
+			toast.success('Login Successfully !')
+			navigate('/')
+		} else {
+			toast.error('Email or Password wrong !')
+		}
 	}
 
 
@@ -42,11 +58,11 @@ const AuthPage = () => {
 								</Link>
 							</div>
 							<div className="contact">
-								<form >
+								<form onSubmit={ handleSubmmit } >
 									<h3>SIGN IN</h3>
-									<input name='username' onChange={ handleChangeInput } value={ data.username } type="text" placeholder="USERNAME" />
+									<input name='email' onChange={ handleChangeInput } value={ data.email } type="email" placeholder="EMAIL" />
 									<input name='password' onChange={ handleChangeInput } value={ data.password } type="text" placeholder="PASSWORD" />
-									<button className="submit" onClick={ handleLogin }>LET'S GO</button>
+									<button className="submit" type='submit'>LET'S GO</button>
 									<p className="py-4">
 										Or <span className='text-sky-500 font-medium hover:cursor-pointer underline' onClick={ toggleAuth }>create a new account</span>
 									</p>
@@ -55,8 +71,8 @@ const AuthPage = () => {
 						</div>
 						<div className="right">
 							<div className="right-text">
-								<h2>LONYX</h2>
-								<h5>A UX BASED CREATIVE AGENCY</h5>
+								<h2>CNN</h2>
+								<h5>Convolutional Neural Network</h5>
 							</div>
 							<div className="right-inductor">
 								<img
@@ -70,8 +86,8 @@ const AuthPage = () => {
 					<>
 						<div className="right">
 							<div className="right-text">
-								<h2>LONYX</h2>
-								<h5>A UX BASED CREATIVE AGENCY</h5>
+								<h2>CNN</h2>
+								<h5>Convolutional Neural Network</h5>
 							</div>
 							<div className="right-inductor">
 								<img
