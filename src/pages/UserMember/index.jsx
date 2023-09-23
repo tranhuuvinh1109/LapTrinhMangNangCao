@@ -1,12 +1,12 @@
 import React from 'react';
+import { dataTable } from '../../const';
+import { Table } from '../../components';
+
 
 const UserMember = () => {
 	return (
 		<div>
-			<h1 className='text-black'>
-				UserMember
-			</h1>
-
+			<Table dataTable={ dataTable } />
 		</div>
 	)
 }
