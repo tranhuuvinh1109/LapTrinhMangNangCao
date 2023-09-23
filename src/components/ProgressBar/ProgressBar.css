@@ -1,0 +1,42 @@
+.progressBar {
+	background-color: rgb(241 245 249);
+	height: 16px;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+  width: 80%;
+}
+.progressPercent {
+	margin: 0 4px;
+	height: 10px;
+	border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+	z-index: 100;
+	animation: move 2s linear infinite;
+	background-size: 20px 20px;
+	background-image: linear-gradient(
+    -45deg,
+    rgb(253 186 116) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgb(253 186 116) 50%,
+    rgb(253 186 116) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
+}
+.done {
+  border-radius: 20px;
+  background: rgb(134 239 172);
+}
