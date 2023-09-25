@@ -1,0 +1,13 @@
+/* .items-center {
+  -webkit-align-items: center;
+          align-items: center;
+} */
+
+.items-center a {
+  text-decoration: none;
+}
+
+.bg-blueGray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
+}

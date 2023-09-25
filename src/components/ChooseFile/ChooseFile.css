@@ -1,0 +1,41 @@
+.chooseFileContainer {
+	max-width: 1250px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+.chooseFileForm {
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(61, 153, 245);
+	border-radius: 10px;
+	padding: 20px 0;
+}
+.chooseFileFormContentIcon {
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+	padding: 6px 0;
+}
+.chooseFileFormContentButton {
+	background-color: #ffffff;
+	padding: 10px 30px;
+	display: flex;
+	border-radius: 6px;
+}
+.chooseFileFormContentButtonText {
+	font-weight: 500;
+	margin-left: 4px;
+}
+.chooseFileFormContentButton:hover {
+	cursor: pointer;
+	background-color: rgb(226 232 240);
+}
+.chooseFileFormContentBottom {
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: 400;
+	color: #ffffff;
+}
