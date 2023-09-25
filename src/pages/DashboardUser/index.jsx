@@ -6,7 +6,7 @@ const DashboardUser = () => {
 	return (
 		<div>
 			<h1>
-				DashboardUser
+				User Dashboard
 			</h1>
 		</div>
 	)

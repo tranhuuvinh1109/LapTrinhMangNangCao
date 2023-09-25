@@ -4,7 +4,7 @@ import "./DashboardAdmin.css";
 const DashboardAdmin = () => {
   return (
     <h1>
-      aaaa
+      some statistic stuffs i might add later
     </h1>
   )
 };
