@@ -1,6 +1,6 @@
 const firstUserData = {
   id: 1,
-  projectName: "user first",
+  projectName: "Trained Model CNN",
   user: {
     id: 1,
     avatar:
