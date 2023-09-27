@@ -129,9 +129,9 @@ export default function Sidebar() {
             </ul>
             <hr className="my-4 md:min-w-full" />
             <h6 className="md:min-w-full text-blueGray-500 text-sm uppercase font-bold block pt-1 pb-4 no-underline">
-              User
+              User Management
             </h6>
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 p-0">
               <li className="items-center">
                 <Link
                   className={

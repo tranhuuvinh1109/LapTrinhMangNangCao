@@ -5,9 +5,8 @@ import { userTable, viewColumns } from '../../const';
 const UserMember = () => {
 	return (
 		<div>
-			<TableCard dataCard={userTable} viewColumns={viewColumns} />
+			<TableCard userTable={userTable} viewColumns={viewColumns} />
 		</div>
-
 	)
 }
 
