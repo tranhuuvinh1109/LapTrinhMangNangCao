@@ -22,6 +22,10 @@ const firstUserData = {
     { status: "training", progress: 90, date: "2022-07-29" },
     { status: "done", progress: 100, date: "2022-09-15" },
     { status: "training", progress: 85, date: "2022-11-30" },
+    { status: "training", progress: 85, date: "2022-11-30" },
+    { status: "training", progress: 85, date: "2022-11-30" },
+    { status: "training", progress: 85, date: "2022-11-30" },
+    { status: "training", progress: 85, date: "2022-11-30" },
   ],
 };
 

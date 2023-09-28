@@ -9,9 +9,10 @@ const LayoutUser = () => {
     <div className="flex overflow-hidden">
       <Sidebar />
       <div className="relative w-10/12 bg-blueGray-100">
-        <NavbarAdmin />
-        <HeaderStats />
-        <div className="ss">
+        <div className="">
+          {" "}
+          <NavbarAdmin />
+          {/* <HeaderStats /> */}
           <Outlet />
         </div>
       </div>

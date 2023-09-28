@@ -1,5 +1,4 @@
 import React from "react";
-import "./LayoutAdmin.css";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "../../components";
 import NavbarAdmin from "../../components/NavbarAdmin";

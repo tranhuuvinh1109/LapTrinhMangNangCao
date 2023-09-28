@@ -2,18 +2,20 @@ import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCloudDoneOutline } from "react-icons/io5";
 import ProgressBar from "../../../components/ProgressBar";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 import { BsFolderSymlink } from "react-icons/bs";
 
 const TableTrained = ({ userData }) => {
   return (
-    <div className="max-h-[600px] overflow-y-auto">
+    <div className="max-h-[855px] overflow-y-auto">
       <div className="bg-slate-100 text-slate-400 font-medium flex pt-6 pl-4 pb-2">
-        <div className="w-1/6">STT</div>
+        <div className="w-8">STT</div>
         <div className="w-1/6">Project Name</div>
         <div className="w-1/12">Status</div>
         <div className="w-1/6">Progress</div>
         <div className="w-1/6">Date</div>
         <div className="w-1/6">Link Drive</div>
+        <div className="w-1/6">Xem Chi Tiết</div>
       </div>
       <div>
         {userData.trainingHistory.map((training, index) => (
@@ -21,7 +23,7 @@ const TableTrained = ({ userData }) => {
             key={index}
             className="font-medium flex pl-4 py-4 items-center border-b"
           >
-            <div className="w-1/6">{index + 1}</div>
+            <div className="w-8">{index + 1}</div>
             <div className="w-1/6">{userData.projectName}</div>
             <div className="w-1/12">
               {training.status === "done" ? (
@@ -51,6 +53,16 @@ const TableTrained = ({ userData }) => {
                 className="inline-block text-center"
               >
                 <BsFolderSymlink fontSize={20} />
+              </a>
+            </div>
+            <div className="w-1/6">
+              <a
+                href={userData.linkDrive}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-center"
+              >
+                <IoIosInformationCircleOutline fontSize={20} />
               </a>
             </div>
           </div>

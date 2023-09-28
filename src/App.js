@@ -9,10 +9,13 @@ import {
   LayoutDefault,
   HomePage,
   UserMember,
+  LayoutUser,
 } from "./pages";
 import { Toaster } from "react-hot-toast";
 import UserHistory from "./pages/UserHistory";
 import TrainedModel from "./pages/TrainedModel";
+import Profile from "./components/Profile";
+import ChangePassword from "./pages/AuthPage/ChangePassword";
 
 export const APP_CONTEXT = createContext({});
 function App() {
@@ -25,8 +28,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LayoutDefault />}>
             <Route index element={<HomePage />} />
-            <Route path="/user" element={<LayoutAdmin />}>
+            <Route path="/user" element={<LayoutUser />}>
               <Route path="trained-models" element={<TrainedModel />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="change-password" element={<ChangePassword />} />
             </Route>
             <Route path="/user/dashboard" element={<DashboardUser />} />
           </Route>
