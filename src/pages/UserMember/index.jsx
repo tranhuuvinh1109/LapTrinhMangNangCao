@@ -1,12 +1,11 @@
 import React from 'react';
-import { dataTable } from '../../const';
-import { Table } from '../../components';
-
+import { TableCard } from '../../components';
+import { userTable, viewColumns } from '../../const';
 
 const UserMember = () => {
 	return (
 		<div>
-			<Table dataTable={ dataTable } />
+			<TableCard userTable={userTable} viewColumns={viewColumns} />
 		</div>
 	)
 }

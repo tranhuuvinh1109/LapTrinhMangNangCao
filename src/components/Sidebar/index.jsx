@@ -4,11 +4,11 @@ import NotificationDropdown from "../Dropdowns/NotificationDropdown";
 import UserDropdown from "../Dropdowns/UserDropdown";
 import './Sidebar.css'
 import { RxDashboard } from 'react-icons/rx'
-import { FiSettings, FiUsers } from 'react-icons/fi'
+import { FiServer, FiSettings, FiUsers } from 'react-icons/fi'
 import { HiOutlineTable } from 'react-icons/hi'
 import logo from '../../assets/images/icon.png'
 
-export default function Sidebar () {
+export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
     <>
@@ -17,7 +17,7 @@ export default function Sidebar () {
           <button
             className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
             type="button"
-            onClick={ () => setCollapseShow("bg-white m-2 py-3 px-6") }
+            onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
           >
             <i className="fas fa-bars"></i>
           </button>
@@ -26,7 +26,7 @@ export default function Sidebar () {
             to="/"
           >
             <div className="flex justify-center items-center">
-              <img src={ logo } alt="logo" className="w-16 mr-4" /> <span className="text-lg">CNN</span>
+              <img src={logo} alt="logo" className="w-16 mr-4" /> <span className="text-lg">CNN</span>
             </div>
           </Link>
           <ul className="md:hidden items-center flex flex-wrap list-none">
@@ -57,7 +57,7 @@ export default function Sidebar () {
                   <button
                     type="button"
                     className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
-                    onClick={ () => setCollapseShow("hidden") }
+                    onClick={() => setCollapseShow("hidden")}
                   >
                     <i className="fas fa-times"></i>
                   </button>
@@ -79,7 +79,7 @@ export default function Sidebar () {
                   }
                   to="/admin/dashboard"
                 >
-                  <RxDashboard fontSize={ 18 } className={
+                  <RxDashboard fontSize={18} className={
                     "mr-2 text-sm " +
                     (window.location.pathname === '/admin/dashboard'
                       ? ""
@@ -98,7 +98,7 @@ export default function Sidebar () {
                   }
                   to="/admin/settings"
                 >
-                  <FiSettings fontSize={ 18 } className={
+                  <FiSettings fontSize={18} className={
                     "mr-2 text-sm " +
                     (window.location.pathname === '/admin/settings'
                       ? ""
@@ -117,7 +117,7 @@ export default function Sidebar () {
                   }
                   to="/admin/tables"
                 >
-                  <HiOutlineTable fontSize={ 18 } className={
+                  <HiOutlineTable fontSize={18} className={
                     "mr-2 text-sm " +
                     (window.location.pathname === '/admin/tables'
                       ? ""
@@ -128,27 +128,46 @@ export default function Sidebar () {
               </li>
             </ul>
             <hr className="my-4 md:min-w-full" />
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              User
+            <h6 className="md:min-w-full text-blueGray-500 text-sm uppercase font-bold block pt-1 pb-4 no-underline">
+              User Management
             </h6>
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 p-0">
               <li className="items-center">
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold flex items-center hover:opacity-60 " +
-                    (window.location.pathname === '/admin/members'
+                    (window.location.pathname === '/admin/projects'
                       ? "text-blue-500"
                       : "text-black")
                   }
-                  to="/admin/members"
+                  to="/admin/projects"
                 >
-                  <FiUsers fontSize={ 18 } className={
+                  <FiServer fontSize={18} className={
                     "mr-2 text-sm " +
-                    (window.location.pathname === '/admin/members'
+                    (window.location.pathname === '/admin/projects'
                       ? ""
                       : "opacity-75")
                   } />
-                  Member
+                  Projects
+                </Link>
+              </li>
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold flex items-center hover:opacity-60 " +
+                    (window.location.pathname === '/admin/users'
+                      ? "text-blue-500"
+                      : "text-black")
+                  }
+                  to="/admin/users"
+                >
+                  <FiUsers fontSize={18} className={
+                    "mr-2 text-sm " +
+                    (window.location.pathname === '/admin/users'
+                      ? ""
+                      : "opacity-75")
+                  } />
+                  Users
                 </Link>
               </li>
             </ul>

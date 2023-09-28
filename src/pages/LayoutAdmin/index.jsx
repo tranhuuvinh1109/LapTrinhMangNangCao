@@ -12,7 +12,7 @@ const LayoutAdmin = () => {
       <div className="relative w-10/12 bg-blueGray-100">
         <NavbarAdmin />
         <HeaderStats />
-        <div className="ss">
+        <div className="h-full">
           <Outlet />
         </div>
       </div>
