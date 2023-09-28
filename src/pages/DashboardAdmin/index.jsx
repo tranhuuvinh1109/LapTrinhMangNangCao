@@ -52,10 +52,10 @@ const DashboardAdmin = () => {
   return (
     <div className=" w-full h-full flex flex-col ">
       <div className="w-full h-20 flex items-center">
-        <h1 className="">Statistic</h1>
+        <h1 className="text-2xl pl-8">Overall Statistic</h1>
       </div>
-      <div className="w-full h-full bg-slate-200">
-        <ResponsiveContainer width="50%" height="50%">
+      <div className="w-full h-full">
+        <ResponsiveContainer width="50%" height="50%" >
           <BarChart
             width={100}
             height={300}
