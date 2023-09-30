@@ -28,25 +28,25 @@ const ChooseFile = () => {
 		event.preventDefault();
 	};
 	return (
-		<div className='chooseFileContainer' onDrop={ handleDrop }
-			onDragOver={ preventDefault }>
+		<div className='chooseFileContainer' onDrop={handleDrop}
+			onDragOver={preventDefault}>
 			<form className='chooseFileForm'>
 				<div className='chooseFileFormContent'>
 					{
-						selectedFile ? <p>{ selectedFile?.name }</p>
+						selectedFile ? <p>{selectedFile?.name}</p>
 							:
 							<>
 								<div className='chooseFileFormContentIcon'>
-									<AiOutlineFileZip className='' fontSize={ 50 } />
+									<AiOutlineFileZip className='' fontSize={50} />
 								</div>
 								<label htmlFor='file' className='chooseFileFormContentButton'>
-									<AiOutlineFileAdd fontSize={ 24 } />
+									<AiOutlineFileAdd fontSize={24} />
 									<span className='chooseFileFormContentButtonText'>
 										Choose File
 									</span>
 								</label>
-								<input type="file" id='file' name='file' className='hidden' onChange={ handleFileChange } />
-								<p className='chooseFileFormContentBottom' onClick={ () => console.log(selectedFile) }>
+								<input type="file" id='file' name='file' className='hidden' onChange={handleFileChange} />
+								<p className='chooseFileFormContentBottom text-center' onClick={() => console.log(selectedFile)}>
 									Or drop files here
 								</p>
 							</>

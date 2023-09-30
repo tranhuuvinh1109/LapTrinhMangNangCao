@@ -1,11 +1,15 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { BsFolderSymlink } from 'react-icons/bs';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { IoCloudDoneOutline } from 'react-icons/io5'
 import ProgressBar from '../ProgressBar';
 import UserCard from '../UserCard';
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3001');
 
 const CardTable = ({ dataCardTable }) => {
+
 	const createAt = useMemo(() => {
 		const convert = new Date(dataCardTable.createAt);
 		return (
@@ -40,7 +44,34 @@ const CardTable = ({ dataCardTable }) => {
 	)
 }
 
-const Table = ({ dataTable }) => {
+const Table = () => {
+
+	const [dataTable, setDataTable] = useState([])
+
+	const renderCard = useMemo(() => {
+		return (
+			dataTable.map((cardTable) => {
+				return <CardTable dataCardTable={cardTable} key={cardTable.id} />
+			})
+		)
+	}, [dataTable])
+
+	useEffect(() => {
+		console.log('connection');
+		socket.on('initialProjects', (projects) => {
+			console.log('-->initialProjects', projects.map(project => project.progress));
+		});
+
+		socket.on('updateProjects', (projects) => {
+			// console.log('-->updateProjects', projects);
+			console.log('-->updateProjects', projects.map(project => project.progress));
+			setDataTable(projects);
+		});
+
+		console.log('end');
+	}, [])
+
+
 	return (
 		<div className='max-h-[500px] overflow-y-auto'>
 			<div className='bg-slate-100 text-slate-400 font-medium flex pt-6 pl-4 pb-2'>
@@ -54,9 +85,10 @@ const Table = ({ dataTable }) => {
 			</div>
 			<div>
 				{
-					dataTable.map((cardTable) => {
-						return <CardTable dataCardTable={cardTable} key={cardTable.id} />
-					})
+					// dataTable.map((cardTable) => {
+					// 	return <CardTable dataCardTable={cardTable} key={cardTable.id} />
+					// })
+					renderCard
 				}
 			</div>
 		</div>
