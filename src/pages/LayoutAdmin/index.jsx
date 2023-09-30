@@ -7,11 +7,11 @@ import HeaderStats from "../../components/HeaderStats";
 
 const LayoutAdmin = () => {
   return (
-    <div className="flex overflow-hidden">
+    <div className="flex flex-row overflow-hidden">
       <Sidebar />
       <div className="relative w-10/12 bg-blueGray-100">
         <NavbarAdmin />
-        <HeaderStats />
+        {/* <HeaderStats /> */}
         <div className="h-full">
           <Outlet />
         </div>
