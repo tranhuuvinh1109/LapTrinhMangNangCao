@@ -1,8 +1,7 @@
 import React from "react";
 import UserDropdown from "../Dropdowns/UserDropdown";
-import CardStats from "../Cards/CardStats";
 
-export default function NavbarAdmin() {
+export default function NavbarAdmin () {
   return (
     <>
       <nav className="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
@@ -10,7 +9,7 @@ export default function NavbarAdmin() {
           <a
             className="text-white text-lg uppercase hidden lg:inline-block font-bold"
             href="#pablo"
-            onClick={(e) => e.preventDefault()}
+            onClick={ (e) => e.preventDefault() }
           >
             Dashboard
           </a>
