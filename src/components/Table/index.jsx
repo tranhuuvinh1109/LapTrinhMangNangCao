@@ -73,8 +73,8 @@ const Table = () => {
 
 
 	return (
-		<div className='max-h-[500px] overflow-y-auto'>
-			<div className='bg-slate-100 text-slate-400 font-medium flex pt-6 pl-4 pb-2'>
+		<div className='max-h-[775px] overflow-y-auto'>
+			<div className='bg-slate-200 text-slate-500 font-medium flex pt-6 pl-4 pb-2'>
 				<div className='w-8 flex justify-center'>No.</div>
 				<div className='w-3/12 flex justify-center'>Project Name</div>
 				<div className='w-1/12 flex justify-center'>Status</div>
@@ -83,7 +83,7 @@ const Table = () => {
 				<div className='w-1/12 flex justify-center'>Link Model</div>
 				<div className='w-1/12 flex justify-center'>Create At</div>
 			</div>
-			<div>
+			<div className='bg-slate-100'>
 				{
 					// dataTable.map((cardTable) => {
 					// 	return <CardTable dataCardTable={cardTable} key={cardTable.id} />
