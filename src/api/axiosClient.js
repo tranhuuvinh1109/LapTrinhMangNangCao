@@ -3,7 +3,8 @@ import axios from 'axios';
 const axiosClient = axios.create({
 	// baseURL: 'http://127.0.0.1:8000/api'
 	// baseURL: 'https://pbl5-production-dc9d.up.railway.app',
-	baseURL: 'http://127.0.0.1:8000/',
+	// baseURL: 'http://127.0.0.1:8000/',
+	baseURL: 'http://127.0.0.1:3001/',
 
 });
 // axiosClient.interceptors.request.use(

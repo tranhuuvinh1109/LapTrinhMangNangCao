@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChooseFile } from '../../components';
+import { ChooseFile, ProgressBarAnimation, UploadFile } from '../../components';
 import './HomePage.css'
 
 
@@ -7,6 +7,8 @@ const HomePage = () => {
 	return (
 		<div>
 			<ChooseFile />
+			<UploadFile />
+			{/* <ProgressBarAnimation progress={10} /> */}
 		</div>
 	)
 }
