@@ -19,7 +19,7 @@ const Navbar = () => {
 		<nav>
 			<div className="navbar">
 				<i className='bx bx-menu'></i>
-				<div className="logo"><Link to='/'><img src={ logo } className='w-10' alt='logo' /></Link></div>
+				<div className="logo"><Link to='/'><img src={logo} className='w-10' alt='logo' /></Link></div>
 				<div className="nav-links">
 					<div className="sidebar-logo">
 						<span className="logo-name">CodingLab</span>
@@ -31,13 +31,16 @@ const Navbar = () => {
 							<Link to='/user/dashboard'>Dashboard User</Link>
 						</li>
 						<li>
+							<Link to='/user/manual_code'>Manual Code</Link>
+						</li>
+						<li>
 							<Link to='/admin/dashboard'>Dashboard Admin</Link>
 						</li>
 						<li><span>ABOUT US</span></li>
 						{
 							context?.user?.email ? <li>
 								<div>
-									<AvatarPopover user={ context.user } />
+									<AvatarPopover user={context.user} />
 								</div>
 							</li>
 								:
