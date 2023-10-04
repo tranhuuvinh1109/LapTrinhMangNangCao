@@ -6,7 +6,7 @@ import { RefreshIcon, TrashIcon } from "@heroicons/react/solid";
 export default function ImageClassifier() {
   const [imageURL, setImageURL] = useState(""); // State lưu đường dẫn ảnh
   const [showInput, setShowInput] = useState(true); // State để ẩn/hiện input file
-  const [rotationAngle, setRotationAngle] = useState(0);
+  const [showSubmitInfo, setShowSubmitInfo] = useState(false); // State để hiển thị thông tin khi submit
   const [showPredictedLabel, setShowPredictedLabel] = useState(false);
   const [predictedLabel, setPredictedLabel] = useState("");
   const [predictedAccuracy, setPredictedAccuracy] = useState(0);
@@ -45,11 +45,15 @@ export default function ImageClassifier() {
     setTimeout(() => {
       setShowPredictedLabel(true);
     }, 2000); // Simulate a delay for processing
+
+    // Update the state to show the submit info when image is uploaded
+    setShowSubmitInfo(true);
   }
 
   function handleRemoveImage() {
     setImageURL(""); // Xoá ảnh
     setShowInput(true); // Hiển thị lại input
+    setShowSubmitInfo(false); // Reset the submit info display
   }
 
   const handleRotateImage = (event) => {
@@ -74,18 +78,12 @@ export default function ImageClassifier() {
                       style={{ transform: `rotate(${rotation}deg)` }}
                     />
 
-                    <div className="absolute top-0 right-0 mr-2 flex">
+                    <div className="absolute top-0 right-0 mr-24 flex">
                       <button
-                        className="mr-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
                         onClick={handleRotateImage} // Gọi hàm rotate ảnh
                       >
                         <RefreshIcon className="w-5 h-5" />
-                      </button>
-                      <button
-                        className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full"
-                        onClick={handleRemoveImage} // Gọi hàm xoá ảnh
-                      >
-                        <TrashIcon className="w-5 h-5" />
                       </button>
                     </div>
                   </div>
@@ -106,6 +104,7 @@ export default function ImageClassifier() {
                   <button
                     type="submit"
                     class="py-2 px-4 rounded-full bg-sky-500 hover:bg-sky-600 text-white font-semibold text-sm"
+                    onClick={handleRemoveImage}
                   >
                     Clear
                   </button>
@@ -138,7 +137,7 @@ export default function ImageClassifier() {
             </svg>
           </div>
           <div className="flex-1 border-sky-800 border-2 rounded-xl p-4">
-            {showPredictedLabel && imageURL && (
+            {showSubmitInfo && imageURL && (
               <div>
                 <div className="border-sky-800 border-2 rounded-xl p-2 mb-2">
                   <h1>Fake Predicted Label:</h1>
