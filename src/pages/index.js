@@ -6,6 +6,7 @@ import { default as DashboardUser } from "./DashboardUser";
 import { default as DashboardAdmin } from "./DashboardAdmin";
 import { default as UserMember } from "./UserMember";
 // import { default as UserProject } from "./UserProject";
+import { default as ManualCode } from "./ManualCode";
 
 export {
   HomePage,
@@ -15,4 +16,5 @@ export {
   DashboardAdmin,
   LayoutAdmin,
   UserMember,
+  ManualCode,
 };

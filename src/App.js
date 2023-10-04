@@ -9,6 +9,7 @@ import {
   LayoutDefault,
   HomePage,
   UserMember,
+  ManualCode,
 } from "./pages";
 import { Toaster } from "react-hot-toast";
 import UserProject from "./pages/UserProject";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<LayoutDefault />}>
             <Route index element={<HomePage />} />
             <Route path="/user/dashboard" element={<DashboardUser />} />
+            <Route path="/user/manual_code" element={<ManualCode />} />
           </Route>
           <Route path="/admin" element={<LayoutAdmin />}>
             <Route path="dashboard" element={<DashboardAdmin />} />
