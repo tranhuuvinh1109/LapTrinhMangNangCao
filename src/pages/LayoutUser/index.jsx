@@ -9,12 +9,13 @@ const LayoutUser = () => {
     <div className="flex overflow-hidden">
       <Sidebar />
       <div className="relative w-10/12 bg-blueGray-100">
-        <div className="">
+        <div className="mb-20">
           {" "}
           <NavbarAdmin />
-          {/* <HeaderStats /> */}
-          <Outlet />
         </div>
+
+        {/* <HeaderStats /> */}
+        <Outlet />
       </div>
     </div>
   );
