@@ -1,5 +1,5 @@
 /* Googlefont Poppins CDN Link */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 nav {
   width: 100%;
@@ -148,11 +148,7 @@ nav .navbar .links li:hover .js-sub-menu {
   background: #3e8da8;
 }
 .search-box .input-box::before {
-<<<<<<< HEAD
-  content: "";
-=======
   content: '';
->>>>>>> ea13980d5c14f97ce34497d3da43785d532b8021
   position: absolute;
   height: 20px;
   width: 20px;
@@ -302,11 +298,7 @@ nav .navbar .links li:hover .js-sub-menu {
 }
 
 .active {
-<<<<<<< HEAD
   color: #90c2f5 !important;
   font-size: 17px !important;
   font-weight: bold !important;
-=======
-  color: aqua !important;
->>>>>>> ea13980d5c14f97ce34497d3da43785d532b8021
 }
