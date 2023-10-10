@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Table } from '../../components';
 
 const UserProject = () => {
@@ -6,7 +6,7 @@ const UserProject = () => {
     <div>
       <Table />
     </div>
-  )
-}
+  );
+};
 
-export default UserProject
+export default UserProject;

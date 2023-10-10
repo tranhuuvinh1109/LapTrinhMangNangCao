@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { createPopper } from "@popperjs/core";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPopper } from '@popperjs/core';
 
 const IndexDropdown = () => {
   // dropdown props
@@ -9,7 +9,7 @@ const IndexDropdown = () => {
   const popoverDropdownRef = React.createRef();
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-      placement: "bottom-start",
+      placement: 'bottom-start',
     });
     setDropdownPopoverShow(true);
   };
@@ -32,14 +32,12 @@ const IndexDropdown = () => {
       <div
         ref={popoverDropdownRef}
         className={
-          (dropdownPopoverShow ? "block " : "hidden ") +
-          "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+          (dropdownPopoverShow ? 'block ' : 'hidden ') +
+          'bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48'
         }
       >
         <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
+          className={'text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400'}
         >
           Admin Layout
         </span>
@@ -69,9 +67,7 @@ const IndexDropdown = () => {
         </Link>
         <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
         <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
+          className={'text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400'}
         >
           Auth Layout
         </span>
@@ -89,9 +85,7 @@ const IndexDropdown = () => {
         </Link>
         <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
         <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
+          className={'text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400'}
         >
           No Layout
         </span>

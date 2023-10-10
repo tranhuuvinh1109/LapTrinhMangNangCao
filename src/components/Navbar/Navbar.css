@@ -148,7 +148,11 @@ nav .navbar .links li:hover .js-sub-menu {
   background: #3e8da8;
 }
 .search-box .input-box::before {
+<<<<<<< HEAD
   content: "";
+=======
+  content: '';
+>>>>>>> ea13980d5c14f97ce34497d3da43785d532b8021
   position: absolute;
   height: 20px;
   width: 20px;
@@ -298,7 +302,11 @@ nav .navbar .links li:hover .js-sub-menu {
 }
 
 .active {
+<<<<<<< HEAD
   color: #90c2f5 !important;
   font-size: 17px !important;
   font-weight: bold !important;
+=======
+  color: aqua !important;
+>>>>>>> ea13980d5c14f97ce34497d3da43785d532b8021
 }

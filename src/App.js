@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import React, { createContext, useState } from 'react';
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import {
   LayoutAdmin,
   AuthPage,
@@ -10,9 +10,9 @@ import {
   HomePage,
   UserMember,
   ManualCode,
-} from "./pages";
-import { Toaster } from "react-hot-toast";
-import UserProject from "./pages/UserProject";
+} from './pages';
+import { Toaster } from 'react-hot-toast';
+import UserProject from './pages/UserProject';
 
 export const APP_CONTEXT = createContext({});
 function App() {

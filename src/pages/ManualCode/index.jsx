@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
-import './ManualCode.css'
+import React, { useState } from 'react';
+import './ManualCode.css';
 import CodeMirror, { EditorState, EditorView } from '@uiw/react-codemirror';
-import { githubDark } from '@uiw/codemirror-theme-github'
+import { githubDark } from '@uiw/codemirror-theme-github';
 import { python } from '@codemirror/lang-python';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { FiCheck, FiCopy } from "react-icons/fi";
-
+import { FiCheck, FiCopy } from 'react-icons/fi';
 
 const ManualCode = () => {
-
   const [code, setCode] = useState(
     `def factorial(n):
     if n == 0:
@@ -18,7 +16,7 @@ const ManualCode = () => {
 
   number = 5  # Thay đổi số này để tính giai thừa của một số khác
   result = factorial(number)
-  print(f"Giai thừa của {number} là {result}")`
+  print(f"Giai thừa của {number} là {result}")`,
   );
   const [copied, setCopied] = useState(false);
 
@@ -30,18 +28,18 @@ const ManualCode = () => {
   };
 
   return (
-    <div className='mt-4 flex flex-col items-center justify-center'>
+    <div className="mt-4 flex flex-col items-center justify-center">
       <h3>Manual Code</h3>
-      <div className='bg-[#333338] w-[60%]'>
+      <div className="bg-[#333338] w-[60%]">
         <div className=" flex items-center justify-between">
           <div className="text-white flex justify-end py-2 px-4 text-sm">
             <span>python</span>
           </div>
-          <div className='text-white flex justify-end py-2 px-3'>
+          <div className="text-white flex justify-end py-2 px-3">
             <CopyToClipboard text={code} onCopy={handleCopyClick}>
               <div className="flex flex-row gap-2 items-center copy_to_clipboard">
-                {copied ? <FiCheck className='text-md' /> : <FiCopy className='text-md' />}
-                <span className='text-sm'>{copied ? 'Copied!' : 'Copy code'}</span>
+                {copied ? <FiCheck className="text-md" /> : <FiCopy className="text-md" />}
+                <span className="text-sm">{copied ? 'Copied!' : 'Copy code'}</span>
               </div>
             </CopyToClipboard>
           </div>
@@ -50,13 +48,13 @@ const ManualCode = () => {
         <CodeMirror
           value={code}
           onBeforeChange={(_editor, _data, value) => setCode(value)}
-          height='300px'
+          height="300px"
           theme={githubDark}
           extensions={[python({ python: true }), EditorView.editable.of(false), EditorState.readOnly.of(true)]}
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ManualCode
+export default ManualCode;

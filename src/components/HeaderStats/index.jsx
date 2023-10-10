@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import CardStats from "../Cards/CardStats";
+import CardStats from '../Cards/CardStats';
 
-export default function HeaderStats () {
+export default function HeaderStats() {
   return (
     <>
       <div className="relative bg-cyan-400 md:pt-32 pb-12 pt-12">
