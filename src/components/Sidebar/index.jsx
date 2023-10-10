@@ -26,7 +26,7 @@ export default function Sidebar() {
             to="/"
           >
             <div className="flex justify-center items-center">
-              <img src={logo} alt="logo" className="w-16 mr-4" /> <span className="text-lg">CNN</span>
+              <img src={logo} alt="logo" className="w-16 mr-2" /> <span className="text-[30px] font-normal">CNN</span>
             </div>
           </Link>
           <ul className="md:hidden items-center flex flex-wrap list-none">

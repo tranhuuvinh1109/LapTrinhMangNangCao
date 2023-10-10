@@ -4,7 +4,7 @@ import UserDropdown from '../Dropdowns/UserDropdown';
 export default function NavbarAdmin() {
   return (
     <>
-      <div className="bg-[#3e8da8] w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4 py-2">
+      <div className="bg-[#2b6275] w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4 py-2">
         <a
           className="text-white text-lg uppercase hidden lg:inline-block font-bold"
           href="#pablo"
