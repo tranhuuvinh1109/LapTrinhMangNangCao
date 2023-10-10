@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/icon.png';
 import AvatarPopover from '../AvatarPopover';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-  // const [activeItem, setActiveItem] = useState('Dashboard'); // Initialize with the default active item
+  const user = useSelector((state) => state.user);
 
-  // const handleItemClick = (itemName) => {
-  // 	setActiveItem(itemName);
-  // };
+  const renderUser = useMemo(() => {
+    if (user) {
+      return (
+        <div>
+          <AvatarPopover user={user.user} />
+        </div>
+      );
+    }
+    return <Link to="auth">Login</Link>;
+  }, [user]);
 
   return (
     <nav>
@@ -43,20 +51,7 @@ const Navbar = () => {
             <li>
               <span>ABOUT US</span>
             </li>
-            {/* {true ? (
-              <li>
-                <div>
-                  <AvatarPopover user={{}} />
-                </div>
-              </li>
-            ) : (
-              <li>
-                <Link to="auth">Login</Link>
-              </li>
-            )} */}
-            <li>
-              <Link to="auth">Login</Link>
-            </li>
+            <li>{renderUser}</li>
           </ul>
         </div>
         <div className="search-box">

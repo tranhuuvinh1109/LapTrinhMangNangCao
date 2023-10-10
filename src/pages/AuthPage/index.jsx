@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AuthPage.css';
 import { Link, useNavigate } from 'react-router-dom';
-import authAPI from '../../api/authAPI';
 import { toast } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../redux/userSlice/userAction';
 
 const AuthPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const [stateAuth, setStateAuth] = useState('login');
   const [data, setData] = useState({
     email: '',
@@ -21,21 +24,18 @@ const AuthPage = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // const handleLogin = async () => {
-  // 	const res = await authAPI.login(data)
-  // 	console.log('---', res);
-  // }
-
   const handleSubmmit = async (e) => {
     e.preventDefault();
-    const res = await authAPI.login(data);
-    if (res.data.status === 200) {
-      toast.success('Login Successfully !');
-      navigate('/');
-    } else {
-      toast.error('Email or Password wrong !');
-    }
+    dispatch(loginUser(data));
   };
+  useEffect(() => {
+    const token = localStorage.getItem('CNN_TOKEN');
+    if (token) {
+      navigate('/');
+    } else if (user.error) {
+      toast.error(user.error);
+    }
+  }, [user, navigate]);
 
   return (
     <section className="login">
