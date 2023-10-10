@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-import "./DashboardAdmin.css";
+import './DashboardAdmin.css';
 
 const data = [
   {
@@ -55,7 +55,7 @@ const DashboardAdmin = () => {
         <h1 className="text-2xl pl-8">Overall Statistic</h1>
       </div>
       <div className="w-full h-full">
-        <ResponsiveContainer width="50%" height="50%" >
+        <ResponsiveContainer width="50%" height="50%">
           <BarChart
             width={100}
             height={300}
@@ -77,9 +77,8 @@ const DashboardAdmin = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
-
     </div>
-  )
+  );
 };
 
 export default DashboardAdmin;

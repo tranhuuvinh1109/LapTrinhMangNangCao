@@ -3,11 +3,11 @@ import { TableCard } from '../../components';
 import { userTable, viewColumns } from '../../const';
 
 const UserMember = () => {
-	return (
-		<div>
-			<TableCard userTable={userTable} viewColumns={viewColumns} />
-		</div>
-	)
-}
+  return (
+    <div>
+      <TableCard userTable={userTable} viewColumns={viewColumns} />
+    </div>
+  );
+};
 
-export default UserMember
+export default UserMember;
