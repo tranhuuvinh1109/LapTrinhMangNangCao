@@ -1,12 +1,9 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { BsFolderSymlink } from 'react-icons/bs';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { IoCloudDoneOutline } from 'react-icons/io5';
 import ProgressBar from '../ProgressBar';
 import UserCard from '../UserCard';
-import { io } from 'socket.io-client';
-
-const socket = io('http://localhost:3001');
 
 const CardTable = ({ dataCardTable }) => {
   const createAt = useMemo(() => {
@@ -66,27 +63,6 @@ const Table = () => {
       return <CardTable dataCardTable={cardTable} key={cardTable.id} />;
     });
   }, [dataTable]);
-
-  useEffect(() => {
-    console.log('connection');
-    socket.on('initialProjects', (projects) => {
-      console.log(
-        '-->initialProjects',
-        projects.map((project) => project.progress),
-      );
-    });
-
-    socket.on('updateProjects', (projects) => {
-      // console.log('-->updateProjects', projects);
-      console.log(
-        '-->updateProjects',
-        projects.map((project) => project.progress),
-      );
-      setDataTable(projects);
-    });
-
-    console.log('end');
-  }, []);
 
   return (
     <div className="max-h-[775px] overflow-y-auto">
