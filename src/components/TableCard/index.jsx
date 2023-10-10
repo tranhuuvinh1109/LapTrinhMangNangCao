@@ -57,7 +57,7 @@ const UserTableCard = ({ userCardTable }) => {
           onOk={handleModifyOk} onCancel={handleModifyCancel}
         >
           <div className="pt-4 px-2 flex flex-col">
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-4 items-center mb-2">
               <p>Avatar</p>
               <Upload>
                 <Button className=''>
@@ -66,15 +66,15 @@ const UserTableCard = ({ userCardTable }) => {
               </Upload>
             </div>
             <p>Username</p>
-            <Input placeholder="User's username" className='mb-2' />
+            <Input placeholder="User's username" className='mb-3' />
             <p>Email</p>
-            <Input placeholder="User's email" className='mb-2' />
-            <div className="flex flex-row items-center gap-4 my-2">
+            <Input placeholder="User's email" className='mb-3' />
+            <div className="flex flex-row items-center gap-4 mb-3">
               <p>Total Projects</p>
               <InputNumber size='large' min={1} max={10} defaultValue={3} />
             </div>
             <p>Drive link</p>
-            <Input placeholder='URLs' className='mb-2' />
+            <Input placeholder='URLs' className='mb-3' />
           </div>
         </Modal>
 
