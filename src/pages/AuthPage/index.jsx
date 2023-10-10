@@ -1,13 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import './AuthPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import authAPI from '../../api/authAPI';
 import { toast } from 'react-hot-toast';
-import { APP_CONTEXT } from '../../App';
 
 const AuthPage = () => {
   const navigate = useNavigate();
-  const context = useContext(APP_CONTEXT);
   const [stateAuth, setStateAuth] = useState('login');
   const [data, setData] = useState({
     email: '',
@@ -32,7 +30,6 @@ const AuthPage = () => {
     e.preventDefault();
     const res = await authAPI.login(data);
     if (res.data.status === 200) {
-      context.setUser(res.data.data.user);
       toast.success('Login Successfully !');
       navigate('/');
     } else {

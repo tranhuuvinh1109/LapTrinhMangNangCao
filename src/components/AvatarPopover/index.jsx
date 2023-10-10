@@ -1,17 +1,14 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Popover, Avatar, Divider } from 'antd';
 import { PiSignOutFill } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
-import { APP_CONTEXT } from '../../App';
 import { toast } from 'react-hot-toast';
 
 const AvatarPopover = ({ user }) => {
   const navigate = useNavigate();
-  const context = useContext(APP_CONTEXT);
 
   const content = useMemo(() => {
     const handleLogout = () => {
-      context.setUser({});
       toast.success('Logout Successfully !');
       navigate('/auth');
     };
@@ -33,7 +30,7 @@ const AvatarPopover = ({ user }) => {
         </ul>
       </div>
     );
-  }, [user, navigate, context]);
+  }, [user, navigate]);
   return (
     <Popover content={content} trigger="click">
       <Avatar src="https://s.net.vn/3Bhk" alt="avatar" size="large" />
