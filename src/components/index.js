@@ -6,5 +6,20 @@ import { default as Table } from './Table';
 import { default as ProgressBar } from './ProgressBar';
 import { default as UserCard } from './UserCard';
 import { default as TableCard } from './TableCard';
+import { default as TableProjects } from './TableProjects';
+import { default as StatusTrain } from './StatusTrain';
+import { default as ProgressBarAnimation } from './ProgressBarAnimation';
 
-export { ChooseFile, Navbar, Sidebar, AvatarPopover, Table, ProgressBar, UserCard, TableCard };
+export {
+  ChooseFile,
+  Navbar,
+  Sidebar,
+  AvatarPopover,
+  Table,
+  ProgressBar,
+  UserCard,
+  TableCard,
+  TableProjects,
+  StatusTrain,
+  ProgressBarAnimation,
+};
