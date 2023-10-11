@@ -61,6 +61,9 @@ module.exports = {
       backgroundSize: {
         full: "100%",
       },
+      color: {
+        primary:"#3e8da8"
+      }
     },
   },
   plugins: [],
