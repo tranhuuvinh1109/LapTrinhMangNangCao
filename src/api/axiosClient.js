@@ -26,10 +26,10 @@ axiosClient.interceptors.request.use(
   },
   async (error) => await Promise.reject(error),
 );
-axiosClient.interceptors.response.use(
-  async (response) => await Promise.resolve(response),
-  async (error) => {
-    return await Promise.reject(error);
-  },
-);
+// axiosClient.interceptors.response.use(
+//   async (response) => await Promise.resolve(response),
+//   async (error) => {
+//     return await Promise.reject(error);
+//   },
+// );
 export default axiosClient;
