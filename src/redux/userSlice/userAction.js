@@ -18,10 +18,14 @@ export const loginUser = (params) => async (dispatch) => {
 
 export const getInformationByToken = async () => {
   try {
-    const response = await authAPI.getInformationByToken();
-    console.log('res ->token', response);
-    if (response.status === 200) {
-      dispatch(setUser(response.data.data.user));
+    const token = localStorage.getItem('CNN_TOKEN');
+    console.log({ token });
+    if (token) {
+      const response = await authAPI.getInformationByToken();
+      console.log('res ->token', response);
+      if (response.status === 200) {
+        dispatch(setUser(response.data.data.user));
+      }
     }
   } catch (error) {
     console.log(error);
