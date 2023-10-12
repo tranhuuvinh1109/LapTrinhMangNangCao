@@ -8,11 +8,7 @@ const LayoutDefault = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem('CNN_TOKEN');
-    if (token) {
-      console.log({ token });
-      // dispatch(getInformationByToken(token));
-    }
+    dispatch(getInformationByToken());
   }, []);
   return (
     <div>
