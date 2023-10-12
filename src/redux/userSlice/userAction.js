@@ -6,29 +6,28 @@ export const loginUser = (params) => async (dispatch) => {
   try {
     dispatch(setLoading());
     const response = await authAPI.login(params);
-    if (response.status === 200) {
+    console.log('-->', response);
+    if (response.data.status === 200) {
       localStorage.setItem('CNN_TOKEN', response.data.data.token);
       dispatch(setUser(response.data.data.user));
-      toast.success('Login Successfully !');
+      toast.success(response.data.message);
     }
   } catch (error) {
+    console.log('-->error', error);
     dispatch(setError(error.message));
   }
 };
 
-export const getInformationByToken = async () => {
+export const getInformationByToken = (token) => async (dispatch) => {
   try {
-    const token = localStorage.getItem('CNN_TOKEN');
-    console.log({ token });
-    if (token) {
-      const response = await authAPI.getInformationByToken();
-      console.log('res ->token', response);
-      if (response.status === 200) {
-        dispatch(setUser(response.data.data.user));
-      }
+    const response = await authAPI.getInformationByToken({ token });
+    console.log('res ->token', response);
+    if (response.status === 200) {
+      console.log('success', response);
+      dispatch(setUser(response.data.data.user));
     }
   } catch (error) {
-    console.log(error);
+    dispatch(setError(error.message));
   }
 };
 

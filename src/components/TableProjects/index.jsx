@@ -8,7 +8,7 @@ import { RxShadowNone } from 'react-icons/rx';
 
 const TableProjects = ({ projects }) => {
   const renderProjects = useMemo(() => {
-    if (projects) {
+    if (projects?.length > 0) {
       return projects?.map((project) => {
         const linkIcon = project.linkDrive ? (
           <a href={project.linkDrive} target="_blank" rel="noopener noreferrer" className="inline-block text-center">
