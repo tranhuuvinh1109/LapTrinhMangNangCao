@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import { AiOutlineFileZip, AiOutlineFileAdd } from 'react-icons/ai';
+import { notification } from 'antd';
 import './ChooseFile.css';
 import projectAPI from '../../api/projectAPI';
 
 const ChooseFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (placement) => {
+    api.success({
+      message: `Notification `,
+      description: `Upload file successfully, prepare to train the model!`,
+      placement,
+    });
+  };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -25,7 +35,6 @@ const ChooseFile = () => {
     e.preventDefault();
     if (selectedFile) {
       try {
-        // setSelectedFile(null);
         const today = new Date();
         const res = await projectAPI.uploadDataset({
           user_id: 1,
@@ -34,7 +43,8 @@ const ChooseFile = () => {
             today.getMonth() + 1
           }-${today.getFullYear()} ${today.getHours()}:${today.getMinutes()}`,
         });
-
+        openNotification('bottomRight');
+        setSelectedFile(null);
         console.log('Upload response', res);
       } catch (error) {
         console.error('Upload error', error);
@@ -48,6 +58,7 @@ const ChooseFile = () => {
 
   return (
     <div className="chooseFileContainer" onDrop={handleDrop} onDragOver={preventDefault}>
+      {contextHolder}
       <form className="chooseFileForm" onSubmit={handleUpload}>
         <div className="chooseFileFormContent">
           <div className="chooseFileFormContentIcon">

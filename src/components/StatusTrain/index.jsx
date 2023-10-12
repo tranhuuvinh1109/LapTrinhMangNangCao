@@ -1,6 +1,8 @@
 import React from 'react';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { AiOutlineLoading3Quarters, AiOutlineCloudUpload } from 'react-icons/ai';
 import { IoCloudDoneOutline } from 'react-icons/io5';
+import { HiOutlineQueueList } from 'react-icons/hi2';
+import './StatusTrain.css';
 
 const StatusTrain = ({ status }) => {
   let statusComponent;
@@ -29,9 +31,18 @@ const StatusTrain = ({ status }) => {
         </div>
       );
       break;
+    case 'push to drive':
+      statusComponent = (
+        <div className="bg-cyan-400 flex justify-center items-center w-100 py-1 text-white rounded-full">
+          <AiOutlineCloudUpload fontSize={14} className="cloud-icon" />
+          <span className="ml-1 text-sm">Push</span>
+        </div>
+      );
+      break;
     default:
       statusComponent = (
         <div className="bg-gray-300 flex justify-center items-center w-100 py-1 text-white rounded-full">
+          <HiOutlineQueueList fontSize={14} />
           <span className="text-sm">Waiting</span>
         </div>
       );
