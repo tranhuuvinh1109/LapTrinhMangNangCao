@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/userSlice/userAction';
+import authAPI from '../../api/authAPI';
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -13,7 +14,31 @@ const AuthPage = () => {
   const [data, setData] = useState({
     email: '',
     password: '',
+    username: '',
+    cfPassword: '',
+    avatar: 'https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg',
   });
+
+  const register = async () => {
+    try {
+      const response = await authAPI.register(data);
+      if (response.data.status === 200) {
+        toast.success(response.data.message);
+        setData({
+          email: '',
+          password: '',
+          username: '',
+          cfPassword: '',
+          avatar: 'ss',
+        });
+        setStateAuth('login');
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 
   const toggleAuth = () => {
     setStateAuth(stateAuth === 'login' ? 'register' : 'login');
@@ -26,8 +51,16 @@ const AuthPage = () => {
 
   const handleSubmmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(data));
+    if (stateAuth === 'login') {
+      dispatch(loginUser(data));
+    } else {
+      if (data.cfPassword !== data.password) {
+        toast.error('Password and confirm password are not the same!');
+      }
+      register(data);
+    }
   };
+
   useEffect(() => {
     const token = localStorage.getItem('CNN_TOKEN');
     if (token) {
@@ -83,7 +116,7 @@ const AuthPage = () => {
             </div>
             <div className="right">
               <div className="right-text">
-                <h2>CNN</h2>
+                <h2 onClick={() => console.log(data, stateAuth)}>CNN</h2>
                 <h5>Convolutional Neural Network</h5>
               </div>
               <div className="right-inductor">
@@ -98,7 +131,7 @@ const AuthPage = () => {
           <>
             <div className="right">
               <div className="right-text">
-                <h2>CNN</h2>
+                <h2 onClick={() => console.log(data, stateAuth)}>CNN</h2>
                 <h5>Convolutional Neural Network</h5>
               </div>
               <div className="right-inductor">
@@ -110,13 +143,39 @@ const AuthPage = () => {
             </div>
             <div className="left">
               <div className="contact">
-                <form action="">
+                <form onSubmit={handleSubmmit}>
                   <h3>SIGN UP</h3>
-                  <input type="text" placeholder="USERNAME" />
-                  <input type="email" placeholder="EMAIL" />
-                  <input type="text" placeholder="PASSWORD" />
-                  <input type="text" placeholder="PASSWORD" />
-                  <button className="submit">SUBMIT</button>
+                  <input
+                    name="username"
+                    onChange={handleChangeInput}
+                    value={data.username}
+                    type="text"
+                    placeholder="USERNAME"
+                  />
+                  <input
+                    name="email"
+                    onChange={handleChangeInput}
+                    value={data.email}
+                    type="email"
+                    placeholder="EMAIL"
+                  />
+                  <input
+                    name="password"
+                    onChange={handleChangeInput}
+                    value={data.password}
+                    type="text"
+                    placeholder="PASSWORD"
+                  />
+                  <input
+                    name="cfPassword"
+                    onChange={handleChangeInput}
+                    value={data.cfPassword}
+                    type="text"
+                    placeholder="CONFIRM PASSWORD"
+                  />
+                  <button className="submit" type="submit">
+                    SUBMIT
+                  </button>
                   <p className="py-4">
                     Or{' '}
                     <span className="text-sky-500 font-medium hover:cursor-pointer underline" onClick={toggleAuth}>

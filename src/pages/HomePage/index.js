@@ -14,8 +14,9 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('user', user.user);
     const token = localStorage.getItem('CNN_TOKEN');
-    const databaseRef = ref(db, 'data/user_1');
+    const databaseRef = ref(db, `data/user_${user?.user?.id}`);
     if (!token) {
       navigate('/auth');
     }
@@ -28,6 +29,7 @@ const HomePage = () => {
           ...childSnapshot.val(),
         });
       });
+      console.log('project realtime->', newData);
       dispatch(realtimeProjects(newData));
     });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import NotificationDropdown from '../Dropdowns/NotificationDropdown';
 import UserDropdown from '../Dropdowns/UserDropdown';
 import './Sidebar.css';
@@ -21,14 +21,18 @@ export default function Sidebar() {
           >
             <i className="fas fa-bars"></i>
           </button>
-          <Link
-            className="md:block text-left md:pb-2 mr-0 whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+          <NavLink
             to="/"
+            className={({ isActive, isPending }) =>
+              `md:block text-left md:pb-2 mr-0 whitespace-nowrap text-sm uppercase font-bold p-4 px-0 ${
+                isPending ? 'pending_sidebar' : isActive ? 'active_sidebar' : ''
+              }`
+            }
           >
             <div className="flex justify-center items-center">
               <img src={logo} alt="logo" className="w-16 mr-2" /> <span className="text-[30px] font-normal">CNN</span>
             </div>
-          </Link>
+          </NavLink>
           <ul className="md:hidden items-center flex flex-wrap list-none">
             <li className="inline-block relative">
               <NotificationDropdown />
@@ -70,10 +74,11 @@ export default function Sidebar() {
             </h6>
             <ul className="md:flex-col md:min-w-full flex flex-col list-none p-0">
               <li className="items-center">
-                <Link
-                  className={
-                    'text-xs uppercase py-3 font-bold flex items-center hover:opacity-60 ' +
-                    (window.location.pathname === '/admin/dashboard' ? 'text-blue-500 ' : 'text-black')
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
+                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    }`
                   }
                   to="/admin/dashboard"
                 >
@@ -82,13 +87,14 @@ export default function Sidebar() {
                     className={'mr-2 text-sm ' + (window.location.pathname === '/admin/dashboard' ? '' : 'opacity-75')}
                   />
                   Dashboard
-                </Link>
+                </NavLink>
               </li>
               <li className="items-center">
-                <Link
-                  className={
-                    'text-xs uppercase py-3 font-bold flex items-center hover:opacity-60 ' +
-                    (window.location.pathname === '/admin/settings' ? 'text-blue-500' : 'text-black')
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
+                      isPending ? '' : isActive ? 'text-blue-500' : 'text-black'
+                    }`
                   }
                   to="/admin/settings"
                 >
@@ -97,13 +103,14 @@ export default function Sidebar() {
                     className={'mr-2 text-sm ' + (window.location.pathname === '/admin/settings' ? '' : 'opacity-75')}
                   />
                   Settings
-                </Link>
+                </NavLink>
               </li>
               <li className="items-center">
-                <Link
-                  className={
-                    'text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ' +
-                    (window.location.pathname === '/admin/tables' ? 'text-blue-500 hover:text-pink-50' : 'text-black')
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
+                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    }`
                   }
                   to="/admin/tables"
                 >
@@ -112,7 +119,7 @@ export default function Sidebar() {
                     className={'mr-2 text-sm ' + (window.location.pathname === '/admin/tables' ? '' : 'opacity-75')}
                   />
                   Tables
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <hr className="my-4 md:min-w-full" />
@@ -121,10 +128,11 @@ export default function Sidebar() {
             </h6>
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 p-0">
               <li className="items-center">
-                <Link
-                  className={
-                    'text-xs uppercase py-3 font-bold flex items-center hover:opacity-60 ' +
-                    (window.location.pathname === '/admin/projects' ? 'text-blue-500' : 'text-black')
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
+                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    }`
                   }
                   to="/admin/projects"
                 >
@@ -133,13 +141,14 @@ export default function Sidebar() {
                     className={'mr-2 text-sm ' + (window.location.pathname === '/admin/projects' ? '' : 'opacity-75')}
                   />
                   Projects
-                </Link>
+                </NavLink>
               </li>
               <li className="items-center">
-                <Link
-                  className={
-                    'text-xs uppercase py-3 font-bold flex items-center hover:opacity-60 ' +
-                    (window.location.pathname === '/admin/users' ? 'text-blue-500' : 'text-black')
+                <NavLink
+                  className={({ isActive, isPending }) =>
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
+                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    }`
                   }
                   to="/admin/users"
                 >
@@ -148,7 +157,7 @@ export default function Sidebar() {
                     className={'mr-2 text-sm ' + (window.location.pathname === '/admin/users' ? '' : 'opacity-75')}
                   />
                   Users
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <hr className="my-4 md:min-w-full" />

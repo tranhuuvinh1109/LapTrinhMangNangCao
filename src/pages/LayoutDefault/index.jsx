@@ -6,14 +6,20 @@ import { getInformationByToken } from '../../redux/userSlice/userAction';
 
 const LayoutDefault = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(getInformationByToken());
+    const token = localStorage.getItem('CNN_TOKEN');
+    if (token && !user.user) {
+      dispatch(getInformationByToken(token));
+    }
   }, []);
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <div className="mt-20">
+        <Outlet />
+      </div>
     </div>
   );
 };
