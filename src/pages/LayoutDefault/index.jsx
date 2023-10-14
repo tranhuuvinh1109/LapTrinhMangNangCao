@@ -17,7 +17,9 @@ const LayoutDefault = () => {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <div className="mt-20">
+        <Outlet />
+      </div>
     </div>
   );
 };

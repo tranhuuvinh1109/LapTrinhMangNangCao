@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/icon.png';
 import AvatarPopover from '../AvatarPopover';
 import { useSelector } from 'react-redux';
+import SearchBox from '../SearchBox';
 
 const Navbar = () => {
   const user = useSelector((state) => state.user);
@@ -20,46 +21,60 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav>
+    <nav id="navbar">
       <div className="navbar">
-        <i className="bx bx-menu"></i>
         <div className="logo">
           <Link to="/">
             <img src={logo} className="w-10" alt="logo" />
           </Link>
         </div>
         <div className="nav-links">
-          <div className="sidebar-logo">
-            <span className="logo-name">CodingLab</span>
-            <i className="bx bx-x"></i>
-          </div>
           <ul className="links">
             <li>
-              <Link to="/" className="active">
+              <NavLink
+                to="/"
+                exact
+                className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+              >
                 HOME
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/user/dashboard">Dashboard User</Link>
+              <NavLink
+                to="/user/dashboard"
+                className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+              >
+                DASHBOARD
+              </NavLink>
             </li>
             <li>
-              <Link to="/user/manual_code">Manual Code</Link>
+              <NavLink
+                to="/user/manual_code"
+                className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+              >
+                MANUAL CODE
+              </NavLink>
             </li>
             <li>
-              <Link to="/admin/dashboard">Dashboard Admin</Link>
+              <NavLink
+                to="/admin/dashboard"
+                className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+              >
+                DASHBOARD ADMIN
+              </NavLink>
             </li>
             <li>
-              <span>ABOUT US</span>
+              <NavLink
+                to="/contact"
+                className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+              >
+                CONTACT
+              </NavLink>
             </li>
             <li>{renderUser}</li>
           </ul>
         </div>
-        <div className="search-box">
-          <i className="bx bx-search"></i>
-          <div className="input-box">
-            <input type="text" placeholder="Search..." />
-          </div>
-        </div>
+        <SearchBox />
       </div>
     </nav>
   );
