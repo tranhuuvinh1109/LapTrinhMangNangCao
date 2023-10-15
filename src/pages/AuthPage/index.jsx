@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import './AuthPage.css';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/userSlice/userAction';
 import authAPI from '../../api/authAPI';
+import { InputField } from '../../components';
+import * as yup from 'yup';
+import './AuthPage.css';
 
 const AuthPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [stateAuth, setStateAuth] = useState('login');
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -19,34 +25,61 @@ const AuthPage = () => {
     avatar: 'https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg',
   });
 
+  const registrationSchema = yup.object().shape({
+    username: yup.string().required('Username is required'),
+    email: yup.string().email('Invalid email format').required('Email is required'),
+    password: yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
+    cfPassword: yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
+  });
+
   const register = async () => {
     try {
-      const response = await authAPI.register(data);
-      if (response.data.status === 200) {
-        toast.success(response.data.message);
-        setData({
-          email: '',
-          password: '',
-          username: '',
-          cfPassword: '',
-          avatar: 'ss',
-        });
-        setStateAuth('login');
-      } else {
-        toast.error(response.data.message);
+      await registrationSchema.validate(data, { abortEarly: false });
+      if (Object.keys(errors).length === 0) {
+        const response = await authAPI.register(data);
+        if (response.data.status === 200) {
+          toast.success(response.data.message);
+          setData({
+            email: '',
+            password: '',
+            username: '',
+            cfPassword: '',
+            avatar: 'https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg',
+          });
+          setStateAuth('login');
+        } else {
+          toast.error(response.data.message);
+        }
       }
     } catch (error) {
-      throw new Error(error);
+      if (error instanceof yup.ValidationError) {
+        const newErrors = {};
+        error.inner.forEach((err) => {
+          toast.error(err.message);
+          newErrors[err.path] = err.message;
+        });
+        setErrors(newErrors);
+      } else {
+        throw new Error(error);
+      }
     }
   };
 
   const toggleAuth = () => {
     setStateAuth(stateAuth === 'login' ? 'register' : 'login');
+    setData({
+      email: '',
+      password: '',
+      username: '',
+      cfPassword: '',
+      avatar: 'https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg',
+    });
   };
 
   const handleChangeInput = (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
+    setErrors({});
   };
 
   const handleSubmmit = async (e) => {
@@ -55,10 +88,13 @@ const AuthPage = () => {
       dispatch(loginUser(data));
     } else {
       if (data.cfPassword !== data.password) {
-        toast.error('Password and confirm password are not the same!');
+        setErrors({ ...errors, cfPassword: 'Not match' });
+        return;
       }
-      register(data);
+      setIsLoading(true);
+      await register();
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -88,19 +124,19 @@ const AuthPage = () => {
               <div className="contact">
                 <form onSubmit={handleSubmmit}>
                   <h3>SIGN IN</h3>
-                  <input
+                  <InputField
                     name="email"
                     onChange={handleChangeInput}
+                    error={errors?.email}
                     value={data.email}
                     type="email"
-                    placeholder="EMAIL"
                   />
-                  <input
+                  <InputField
                     name="password"
                     onChange={handleChangeInput}
+                    error={errors?.password}
                     value={data.password}
                     type="text"
-                    placeholder="PASSWORD"
                   />
                   <button className="submit" type="submit">
                     LET'S GO
@@ -145,33 +181,33 @@ const AuthPage = () => {
               <div className="contact">
                 <form onSubmit={handleSubmmit}>
                   <h3>SIGN UP</h3>
-                  <input
+                  <InputField
                     name="username"
                     onChange={handleChangeInput}
+                    error={errors?.username}
                     value={data.username}
                     type="text"
-                    placeholder="USERNAME"
                   />
-                  <input
+                  <InputField
                     name="email"
                     onChange={handleChangeInput}
+                    error={errors?.email}
                     value={data.email}
                     type="email"
-                    placeholder="EMAIL"
                   />
-                  <input
+                  <InputField
                     name="password"
                     onChange={handleChangeInput}
+                    error={errors?.password}
                     value={data.password}
                     type="text"
-                    placeholder="PASSWORD"
                   />
-                  <input
+                  <InputField
                     name="cfPassword"
                     onChange={handleChangeInput}
+                    error={errors?.cfPassword}
                     value={data.cfPassword}
                     type="text"
-                    placeholder="CONFIRM PASSWORD"
                   />
                   <button className="submit" type="submit">
                     SUBMIT
@@ -186,6 +222,11 @@ const AuthPage = () => {
               </div>
             </div>
           </>
+        )}
+        {isLoading && (
+          <div className="loading_wrapper">
+            <AiOutlineLoading3Quarters fontSize={50} className="animate-spin text-white" />
+          </div>
         )}
       </div>
     </section>
