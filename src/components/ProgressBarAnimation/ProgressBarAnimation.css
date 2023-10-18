@@ -6,13 +6,17 @@
 }
 
 .progressBarAnimationContent {
-  width: 100%;
+  width: 80%;
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
   transition: all 0.5s;
   will-change: transform;
   box-shadow: 0 0 5px #e76f51;
+}
+.progressBarAnimationContent-Text {
+  width: 20%;
+  text-align: right;
 }
 .progressBarAnimationContent.small {
   margin: 4px 0;

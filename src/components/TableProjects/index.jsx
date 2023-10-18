@@ -27,7 +27,7 @@ const TableProjects = ({ projects, className }) => {
           <div
             className="font-medium flex pl-4 py-4 items-center border-b hover:cursor-pointer hover:bg-neutral-100"
             key={project.id}
-            onClick={() => navigate(`project/${project.id}`)}
+            onClick={() => navigate(`/project/${project.id}`)}
           >
             <div className="w-1/12 flex justify-center">{project.id}</div>
             <div className="w-2/12 flex justify-center">{project.name}</div>

@@ -29,9 +29,10 @@ const ProgressBarAnimation = ({ progress, size = 'small' || 'medium' || 'large' 
 
   return (
     <div className="progressBarAnimationContrainer">
-      <div className={`progressBarAnimationContent ${size}`} onClick={() => console.log(progress)}>
+      <div className={`progressBarAnimationContent ${size}`}>
         <div ref={progressBarRef} className="progressBarAnmation"></div>
       </div>
+      <span className="progressBarAnimationContent-Text">{parseFloat(progress).toFixed(1)}%</span>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 import { Steps } from 'antd';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../firebase';
@@ -9,6 +9,7 @@ import { BsFolderSymlink } from 'react-icons/bs';
 import { LuFileX2 } from 'react-icons/lu';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { ProgressBarAnimation, StatusTrain } from '../../components';
+import { BsFillArrowThroughHeartFill } from 'react-icons/bs';
 
 const ProjectDetail = () => {
   const [statusValue, setStatusValue] = useState([
@@ -89,6 +90,9 @@ const ProjectDetail = () => {
           if (index < indexFind) {
             return { ...item, status: 'finish', icon: '' };
           } else if (index === indexFind) {
+            if (indexFind === 4) {
+              return { ...item, status: 'progress', icon: <CheckCircleTwoTone twoToneColor="#eb2f96" /> };
+            }
             return { ...item, status: 'progress', icon: <LoadingOutlined /> };
           }
           return { ...item, status: 'wait', icon: '' };
@@ -116,6 +120,34 @@ const ProjectDetail = () => {
           <div className="w-2/12 flex justify-center">Create At</div>
         </div>
         <div>{renderProject}</div>
+      </div>
+      <div className="mt-10">
+        <h5 className="text-3xl italic text-orange-500 font-medium">Product manual</h5>
+        <div className="flex mt-4">
+          <div className="w-4/12">
+            <h4>Please follow these steps:</h4>
+          </div>
+          <div className="w-8/12"></div>
+        </div>
+        <div className="flex">
+          <div className="w-4/12"></div>
+          <div className="w-8/12">
+            <h5>Step 1: Click on the icon and download the trained model</h5>
+            <h5>
+              Step 2:{' '}
+              <a href="http://localhost:3000/user/manual_code" target="_blank">
+                Go here
+              </a>{' '}
+              to copy the code and change the path to the model file
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div className="mt-32 flex justify-center">
+        <h5 className="text-2xl italic flex" style={{ color: '#2b6275' }}>
+          Hope we have solved your problem
+        </h5>
+        <BsFillArrowThroughHeartFill fontSize={32} className="ml-2" style={{ color: '#2b6275' }} />
       </div>
     </div>
   );
