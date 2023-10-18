@@ -6,9 +6,11 @@ import projectAPI from '../../api/projectAPI';
 import { useDispatch } from 'react-redux';
 import { setIsLoadingAPI } from '../../redux/apiSlice/apiAction';
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 const ChooseFile = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const [selectedFile, setSelectedFile] = useState(null);
   const [nameProject, setNameProject] = useState('');
   const [api, contextHolder] = notification.useNotification();
@@ -47,7 +49,7 @@ const ChooseFile = () => {
       try {
         const today = new Date();
         await projectAPI.createProject({
-          user_id: 1,
+          user_id: user.user.id,
           file: selectedFile,
           name: nameProject,
           create_at: `${today.getDate()}-${
