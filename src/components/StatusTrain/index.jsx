@@ -8,10 +8,17 @@ const StatusTrain = ({ status }) => {
   let statusComponent;
 
   switch (status) {
-    case 'upload':
+    case 'waiting':
       statusComponent = (
         <div className="bg-blue-300 flex justify-center items-center w-100 py-1 text-white rounded-full">
-          <span className="text-sm">Upload</span>
+          <span className="text-sm">Waiting</span>
+        </div>
+      );
+      break;
+    case 'extracting':
+      statusComponent = (
+        <div className="bg-yellow-400 flex justify-center items-center w-100 py-1 text-white rounded-full">
+          <span className="text-sm">Extracting</span>
         </div>
       );
       break;

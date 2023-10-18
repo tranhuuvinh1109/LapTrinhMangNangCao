@@ -8,6 +8,8 @@ import { default as UserMember } from './UserMember';
 import { default as ContactPage } from './ContactPage';
 // import { default as UserProject } from "./UserProject";
 import { default as ManualCode } from './ManualCode';
+import { default as ProjectDetail } from './ProjectDetail';
+import { default as LoadingPage } from './LoadingPage';
 
 export {
   HomePage,
@@ -19,4 +21,6 @@ export {
   UserMember,
   ManualCode,
   ContactPage,
+  ProjectDetail,
+  LoadingPage,
 };

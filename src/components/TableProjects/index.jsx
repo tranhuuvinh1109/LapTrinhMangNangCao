@@ -5,8 +5,11 @@ import { BsFolderSymlink } from 'react-icons/bs';
 import { LuFileX2 } from 'react-icons/lu';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { RxShadowNone } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
 
-const TableProjects = ({ projects }) => {
+const TableProjects = ({ projects, className }) => {
+  const navigate = useNavigate();
+
   const renderProjects = useMemo(() => {
     if (projects?.length > 0) {
       return projects?.map((project) => {
@@ -21,16 +24,21 @@ const TableProjects = ({ projects }) => {
         );
 
         return (
-          <div className="font-medium flex pl-4 py-4 items-center border-b" key={project.id}>
+          <div
+            className="font-medium flex pl-4 py-4 items-center border-b hover:cursor-pointer hover:bg-neutral-100"
+            key={project.id}
+            onClick={() => navigate(`project/${project.id}`)}
+          >
             <div className="w-1/12 flex justify-center">{project.id}</div>
+            <div className="w-2/12 flex justify-center">{project.name}</div>
             <div className="w-2/12 px-2 flex justify-center">
               <StatusTrain status={project.status} />
             </div>
-            <div className="w-4/12 px-2 flex justify-center">
+            <div className="w-3/12 px-2 flex justify-center">
               <ProgressBarAnimation progress={project.progress} />
             </div>
             <div className="w-2/12 flex justify-center">{linkIcon}</div>
-            <div className="w-3/12 flex justify-center">{project.createAt}</div>
+            <div className="w-2/12 flex justify-center">{project.createAt}</div>
           </div>
         );
       });
@@ -48,12 +56,13 @@ const TableProjects = ({ projects }) => {
     <div className="shadow-2xl">
       <div className="bg-slate-200 text-slate-500 font-medium flex pt-6 pl-4 pb-2">
         <div className="w-1/12 flex justify-center">Id</div>
+        <div className="w-2/12 flex justify-center">Name</div>
         <div className="w-2/12 px-2 flex justify-center">Status</div>
-        <div className="w-4/12 px-2 flex justify-center">Progress</div>
+        <div className="w-3/12 px-2 flex justify-center">Progress</div>
         <div className="w-2/12 flex justify-center">Link Drive</div>
-        <div className="w-3/12 flex justify-center">Create At</div>
+        <div className="w-2/12 flex justify-center">Create At</div>
       </div>
-      <div>{renderProjects}</div>
+      <div className={`${className ? className : 'max-h-400-px overflow-y-auto'}`}>{renderProjects}</div>
     </div>
   );
 };

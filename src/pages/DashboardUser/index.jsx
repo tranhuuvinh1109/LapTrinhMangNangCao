@@ -1,10 +1,13 @@
 import React from 'react';
 import './DashboardUser.css';
+import { TableProjects } from '../../components';
+import { useSelector } from 'react-redux';
 
 const DashboardUser = () => {
+  const project = useSelector((state) => state.project);
   return (
     <div>
-      <h1>User Dashboard</h1>
+      <TableProjects projects={project.project} className="max-h-600-px overflow-y-auto" />
     </div>
   );
 };
