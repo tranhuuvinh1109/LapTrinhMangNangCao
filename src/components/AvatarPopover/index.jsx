@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/userSlice/userAction';
 
+const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+const color = ColorList[getRandomInt(ColorList.length)];
 const AvatarPopover = ({ user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,7 +22,24 @@ const AvatarPopover = ({ user }) => {
     return (
       <div>
         <div className="flex items-center py-2">
-          <Avatar src="https://s.net.vn/3Bhk" alt="avatar" size="large" />
+          {user?.avatar.includes('http') ? (
+            <Avatar src={user.avatar} alt="avatar" size="large" />
+          ) : (
+            <Avatar
+              style={{
+                backgroundColor: color,
+                verticalAlign: 'middle',
+                height: '40px',
+              }}
+              size="large"
+              gap={4}
+            >
+              {user?.username
+                .split(' ')
+                .map((word) => word.charAt(0))
+                .join('')}
+            </Avatar>
+          )}
           <div className="ml-2">
             <h6 className="m-0">{user?.email}</h6>
             <p className="m-0">{user?.username}</p>
@@ -35,7 +57,24 @@ const AvatarPopover = ({ user }) => {
   }, [user, navigate]);
   return (
     <Popover content={content} trigger="click">
-      <Avatar src="https://s.net.vn/3Bhk" alt="avatar" size="large" />
+      {user?.avatar.includes('http') ? (
+        <Avatar src={user.avatar} alt="avatar" size="large" />
+      ) : (
+        <Avatar
+          style={{
+            backgroundColor: color,
+            verticalAlign: 'middle',
+            height: '40px',
+          }}
+          size="large"
+          gap={4}
+        >
+          {user?.username
+            .split(' ')
+            .map((word) => word.charAt(0))
+            .join('')}
+        </Avatar>
+      )}
     </Popover>
   );
 };

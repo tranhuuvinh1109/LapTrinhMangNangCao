@@ -8,11 +8,13 @@ import { InputField } from '../../components';
 import * as yup from 'yup';
 import './AuthPage.css';
 import LoadingPage from '../LoadingPage';
+import { setIsLoadingAPI } from '../../redux/apiSlice/apiAction';
 
 const AuthPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const isLoading = useSelector((state) => state.api);
   const [stateAuth, setStateAuth] = useState('login');
   const [errors, setErrors] = useState({});
 
@@ -34,6 +36,7 @@ const AuthPage = () => {
   const register = async () => {
     try {
       await registrationSchema.validate(data, { abortEarly: false });
+      dispatch(setIsLoadingAPI(true));
       if (Object.keys(errors).length === 0) {
         const response = await authAPI.register(data);
         if (response.data.status === 200) {
@@ -62,6 +65,7 @@ const AuthPage = () => {
         throw new Error(error);
       }
     }
+    dispatch(setIsLoadingAPI(false));
   };
 
   const toggleAuth = () => {
@@ -90,6 +94,7 @@ const AuthPage = () => {
         setErrors({ ...errors, cfPassword: 'Not match' });
         return;
       }
+
       await register();
     }
   };
@@ -223,7 +228,7 @@ const AuthPage = () => {
           )}
         </div>
       </section>
-      {user.loading && <LoadingPage />}
+      {(user.loading || isLoading.loading) && <LoadingPage />}
     </>
   );
 };
