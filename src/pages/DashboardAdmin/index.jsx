@@ -1,81 +1,64 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { PureComponent, useRef, useState } from 'react';
+import webServerImage from "../../assets/images/WEB_SERVER_PNG.png";
+import workerImage from "../../assets/images/SERVICE_WORKER_PNG.png";
+import active from "../../assets/images/ACTIVE.png"
+import inactive from "../../assets/images/INACTIVE.png"
+import Xarrow from "react-xarrows";
 
 import './DashboardAdmin.css';
 
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
 const DashboardAdmin = () => {
+
+  const [worker1Status, setWorker1Status] = useState(true);
+  const [worker2Status, setWorker2Status] = useState(false);
+
+  const webServer = useRef(null);
+
   return (
-    <div className=" w-full h-full flex flex-col ">
-      <div className="w-full h-20 flex items-center">
-        <h1 className="text-2xl pl-8">Overall Statistic</h1>
+    <div className="w-full h-full flex">
+      <div className="w-1/2 h-full flex items-center justify-center">
+        <div ref={webServer} className="flex flex-col">
+          <div className="w-[125px] h-fit">
+            <img src={webServerImage} alt="web server img" />
+          </div>
+          <span className='text-center text-lg font-bold'>Web Server</span>
+        </div>
       </div>
-      <div className="w-full h-full">
-        <ResponsiveContainer width="50%" height="50%">
-          <BarChart
-            width={100}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="pv" fill="#8884d8" />
-            <Bar dataKey="uv" fill="#82ca9d" />
-          </BarChart>
-        </ResponsiveContainer>
+      <div className="w-1/2 h-full flex flex-col">
+        <div className="h-1/2 w-full flex flex-col items-center justify-center p-2">
+          <div className="w-[75px] h-fit" id='worker1'>
+            <img src={workerImage} alt="worker1 img" />
+          </div>
+          <div className="flex gap-2 justify-center items-center">
+            <span className='text-lg font-bold'>Worker 1</span>
+            {worker1Status ? (
+              <img src={active} alt="" style={{ width: 'auto', height: '20px' }} />
+            ) : (
+              <img src={inactive} alt="" style={{ width: 'auto', height: '20px' }} />
+            )}
+          </div>
+        </div>
+        <Xarrow
+          start={webServer}
+          end="worker1"
+        />
+        <div className="h-1/2 w-full flex flex-col items-center justify-center">
+          <div className="w-[75px] h-fit" id='worker2'>
+            <img src={workerImage} alt="worker2 img" />
+          </div>
+          <div className="flex gap-2 justify-center items-center">
+            <span className='text-lg font-bold'>Worker 2</span>
+            {worker2Status ? (
+              <img src={active} alt="" style={{ width: 'auto', height: '20px' }} />
+            ) : (
+              <img src={inactive} alt="" style={{ width: 'auto', height: '20px' }} />
+            )}
+          </div>
+        </div>
+        <Xarrow
+          start={webServer}
+          end="worker2"
+        />
       </div>
     </div>
   );
