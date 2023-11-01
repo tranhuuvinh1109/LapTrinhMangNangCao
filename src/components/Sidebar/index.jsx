@@ -24,8 +24,7 @@ export default function Sidebar() {
           <NavLink
             to="/"
             className={({ isActive, isPending }) =>
-              `md:block text-left md:pb-2 mr-0 whitespace-nowrap text-sm uppercase font-bold p-4 px-0 ${
-                isPending ? 'pending_sidebar' : isActive ? 'active_sidebar' : ''
+              `md:block text-left md:pb-2 mr-0 whitespace-nowrap text-sm uppercase font-bold p-4 px-0 ${isPending ? 'pending_sidebar' : isActive ? 'active_sidebar' : ''
               }`
             }
           >
@@ -76,8 +75,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <NavLink
                   className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
-                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
                     }`
                   }
                   to="/admin/dashboard"
@@ -86,14 +84,13 @@ export default function Sidebar() {
                     fontSize={18}
                     className={'mr-2 text-sm ' + (window.location.pathname === '/admin/dashboard' ? '' : 'opacity-75')}
                   />
-                  Dashboard
+                  Workers Status
                 </NavLink>
               </li>
               <li className="items-center">
                 <NavLink
                   className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
-                      isPending ? '' : isActive ? 'text-blue-500' : 'text-black'
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? '' : isActive ? 'text-blue-500' : 'text-black'
                     }`
                   }
                   to="/admin/settings"
@@ -108,8 +105,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <NavLink
                   className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
-                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
                     }`
                   }
                   to="/admin/tables"
@@ -130,8 +126,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <NavLink
                   className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
-                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
                     }`
                   }
                   to="/admin/projects"
@@ -146,8 +141,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <NavLink
                   className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${
-                      isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
                     }`
                   }
                   to="/admin/users"
