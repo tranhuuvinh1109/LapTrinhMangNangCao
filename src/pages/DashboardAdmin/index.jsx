@@ -39,6 +39,10 @@ const DashboardAdmin = () => {
           </div>
         </div>
         <Xarrow
+          lineColor={worker1Status ? "#1eb300" : "red"}
+          showHead={false}
+          dashness
+          curveness={0}
           start={webServer}
           end="worker1"
         />
@@ -56,6 +60,10 @@ const DashboardAdmin = () => {
           </div>
         </div>
         <Xarrow
+          lineColor={worker2Status ? "#1eb300" : "red"}
+          showHead={false}
+          dashness
+          curveness={0}
           start={webServer}
           end="worker2"
         />
