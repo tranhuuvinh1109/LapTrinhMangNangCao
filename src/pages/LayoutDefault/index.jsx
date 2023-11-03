@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../firebase';
 import { realtimeProjects } from '../../redux/projectSlice/projectAction';
+import wallpaper from '../../assets/images/1426870.png';
+
 
 const LayoutDefault = () => {
   const dispatch = useDispatch();
@@ -49,6 +51,9 @@ const LayoutDefault = () => {
     <>
       <div className="relative">
         <Navbar />
+        <div className="w-[100%] h-[400px]">
+          <img src={wallpaper} alt="wallpaper" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
         <div className="mt-20 w-9/12 mx-auto">
           <Outlet />
         </div>
