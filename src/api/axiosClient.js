@@ -1,8 +1,8 @@
 import axios from 'axios';
 // const apiURL = process.env.REACT_APP_API_URL;
 const axiosClient = axios.create({
-  baseURL: 'https://c482-117-2-255-218.ngrok.io/api/',
-  // baseURL: 'https://server-deploy-xr7n.onrender.com/api/',
+  // baseURL: 'https://c482-117-2-255-218.ngrok.io/api/',
+  baseURL: 'https://server-deploy-xr7n.onrender.com/api/',
   headers: {
     'Content-Type': 'multipart/form-data',
   },
