@@ -48,15 +48,16 @@ const ChooseFile = () => {
       dispatch(setIsLoadingAPI(true));
       try {
         const today = new Date();
-        await projectAPI.createProject({
+        const res = await projectAPI.createProject({
           user_id: user.user.id,
           file: selectedFile,
           name: nameProject,
-          create_at: `${today.getDate()}-${
-            today.getMonth() + 1
-          }-${today.getFullYear()} ${today.getHours()}:${today.getMinutes()}`,
+          create_at: `${today.getDate()}-${today.getMonth() + 1
+            }-${today.getFullYear()} ${today.getHours()}:${today.getMinutes()}`,
         });
-        openNotification('bottomRight');
+        if (res.status === 200) {
+          openNotification('bottomRight');
+        }
         setSelectedFile(null);
       } catch (error) {
         console.error('Upload error', error);
