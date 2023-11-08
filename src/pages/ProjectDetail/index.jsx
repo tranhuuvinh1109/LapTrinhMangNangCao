@@ -135,10 +135,13 @@ const ProjectDetail = () => {
             <h5>Step 1: Click on the icon and download the trained model</h5>
             <h5>
               Step 2:{' '}
-              <a href="http://localhost:3000/user/manual_code" target="_blank">
+              <a
+                href="https://colab.research.google.com/drive/1kryU80oHeBJXcRFmLJICeQS5K8rSaEtk?usp=sharing"
+                target="_blank"
+              >
                 Go here
               </a>{' '}
-              to copy the code and change the path to the model file
+              and change the path to the model file and test the results
             </h5>
           </div>
         </div>

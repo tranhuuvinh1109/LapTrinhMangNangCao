@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChooseFile, TableProjects } from '../../components';
 import gif1 from '../../assets/gifs/convlayer_overview_demo.gif';
 import gif2 from '../../assets/gifs/convlayer_detailedview_demo.gif';
@@ -9,8 +9,7 @@ import { FaHeadSideVirus } from 'react-icons/fa6';
 
 const HomePage = () => {
   const project = useSelector((state) => state.project);
-
-
+  const [showButton, setShowButton] = useState(true);
 
   const scrollToChooseFile = () => {
     const chooseFileElement = document.getElementById('main-content');
@@ -20,15 +19,24 @@ const HomePage = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScrollButton = () => {
+      window.pageYOffset > 3700 ? setShowButton(false) : setShowButton(true);
+    };
+    window.addEventListener('scroll', handleScrollButton);
+    return () => {
+      window.removeEventListener('scroll', handleScrollButton);
+    };
+  }, []);
   return (
     <div>
-      <div
-        className="button-container text-white gap-2"
-        onClick={scrollToChooseFile}
-      >
-        <FaHeadSideVirus className='text-3xl' />
-        TRAIN NOW!!
-      </div>
+      {showButton && (
+        <div className="button-container text-white gap-2" onClick={scrollToChooseFile}>
+          <FaHeadSideVirus className="text-3xl" />
+          TRAIN NOW!!
+        </div>
+      )}
+
       <div className="w-[100%] h-[400px] mb-4">
         <img src={wallpaper} alt="wallpaper" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
