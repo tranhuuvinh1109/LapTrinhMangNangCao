@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { AiOutlineFileZip, AiOutlineFileAdd } from 'react-icons/ai';
 import { notification } from 'antd';
-import './ChooseFile.css';
 import projectAPI from '../../api/projectAPI';
 import { useDispatch } from 'react-redux';
 import { setIsLoadingAPI } from '../../redux/apiSlice/apiAction';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
+import HDSD from '../../assets/images/hdsd.jpg';
+import './ChooseFile.css';
 
 const ChooseFile = () => {
   const dispatch = useDispatch();
@@ -52,8 +53,9 @@ const ChooseFile = () => {
           user_id: user.user.id,
           file: selectedFile,
           name: nameProject,
-          create_at: `${today.getDate()}-${today.getMonth() + 1
-            }-${today.getFullYear()} ${today.getHours()}:${today.getMinutes()}`,
+          create_at: `${today.getDate()}-${
+            today.getMonth() + 1
+          }-${today.getFullYear()} ${today.getHours()}:${today.getMinutes()}`,
         });
         if (res.status === 200) {
           openNotification('bottomRight');
@@ -74,7 +76,7 @@ const ChooseFile = () => {
   };
 
   return (
-    <div className="chooseFileContainer" onDrop={handleDrop} onDragOver={preventDefault}>
+    <div id="chooseFile" className="chooseFileContainer" onDrop={handleDrop} onDragOver={preventDefault}>
       {contextHolder}
       <form className="chooseFileForm" onSubmit={handleUpload} encType="multipart/form-data">
         <div className="chooseFileFormContent">
@@ -114,6 +116,9 @@ const ChooseFile = () => {
           )}
         </div>
       </form>
+      <div className="flex items-center justify-center">
+        <img src={HDSD} alt="HDSD" className="w-[30%]" />
+      </div>
       <p className="mt-4 italic font-medium text-center" onClick={() => openNotification('bottomRight')}>
         Note: For the model to be highly accurate, your file requirement is a dataset file consisting of many dataset
         images and the image file is the label name of each object.

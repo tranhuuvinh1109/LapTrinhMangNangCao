@@ -55,14 +55,16 @@ const Navbar = () => {
                 MANUAL CODE
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/admin/dashboard"
-                className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
-              >
-                DASHBOARD ADMIN
-              </NavLink>
-            </li>
+            {user?.user?.email === 'Vinh.Developer@gmail.com' && (
+              <li>
+                <NavLink
+                  to="/admin/dashboard"
+                  className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : '')}
+                >
+                  DASHBOARD ADMIN
+                </NavLink>
+              </li>
+            )}
             <li>
               <NavLink
                 to="/contact"

@@ -1,70 +1,78 @@
-import React, { useEffect } from 'react';
-import { Table } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { TableManageProject } from '../../components';
 import manageAPI from '../../api/manageAPI';
 import { db } from '../../firebase';
 import { ref, onValue } from 'firebase/database';
+import { useDispatch } from 'react-redux';
+import { setIsLoadingAPI } from '../../redux/apiSlice/apiAction';
 
 const ManageProject = () => {
-
-  const getAllProjects = async () => {
-    console.log(22)
-    const res = await manageAPI.getAllProject();
-    console.log("test", { res })
-  }
+  const dispatch = useDispatch();
+  const [value, setValue] = useState([]);
 
   const getUserByID = async (id) => {
-    console.log('-->', id)
     const userId = id.split('_')[1];
-    const res = await manageAPI.getUserbyID(userId)
-    console.log({ res })
-  }
+    try {
+      const res = await manageAPI.getUserbyID(userId);
+      return res.data.data.user;
+    } catch (error) {
+      console.error('Error fetching user by ID: ', error);
+      return null;
+    }
+  };
 
   useEffect(() => {
+    dispatch(setIsLoadingAPI(true));
     const databaseRef = ref(db, `data`);
 
-    const unsubscribe = onValue(databaseRef, (snapshot) => {
-      const newData = [];
-      snapshot.forEach((childSnapshot) => {
-        getUserByID(childSnapshot.key)
-        // Object.keys(childSnapshot.val()).forEach((item) => {
-        //   newData.push({
-        //     ...childSnapshot.val()[item],
-        //     user: {
-        //       name: "vinh",
-        //       old: 13
-        //     }
-        //   }
-        //   )
-        // })
-        // childSnapshot.val().forEach((item) => {
-        //   console.log(item)
-        // })
-        // newData.push({
-        //   id: childSnapshot.key,
-        //   ...childSnapshot.val(),
-        // });
-        // console.log(childSnapshot.key, childSnapshot.val())
+    const fetchData = async () => {
+      try {
+        const snapshot = await new Promise((resolve, reject) => {
+          onValue(
+            databaseRef,
+            (snapshot) => {
+              resolve(snapshot);
+            },
+            reject,
+          );
+        });
 
-      });
+        const newData = [];
+        const promises = [];
 
-      console.log(newData)
-    });
+        snapshot.forEach((childSnapshot) => {
+          const userDataPromise = getUserByID(childSnapshot.key);
+          promises.push(userDataPromise);
 
-    return () => {
-      unsubscribe();
+          Object.keys(childSnapshot.val()).forEach((item) => {
+            newData.push({
+              ...childSnapshot.val()[item],
+              id: item,
+              user: childSnapshot.key.split('_')[1],
+            });
+          });
+        });
+
+        const userData = await Promise.all(promises);
+
+        newData.forEach((data) => {
+          data.user = userData.find((item) => item.id === +data.user);
+        });
+
+        setValue(newData);
+        dispatch(setIsLoadingAPI(false));
+      } catch (error) {
+        console.error('Error fetching and processing data: ', error);
+        dispatch(setIsLoadingAPI(false));
+      }
     };
-  }, []);
 
-
-
-
-  useEffect(() => {
-    getAllProjects();
+    fetchData();
   }, []);
 
   return (
     <div>
-      <Table />
+      <TableManageProject dataManageProject={value} />
     </div>
   );
 };
