@@ -51,9 +51,9 @@ const LayoutDefault = () => {
     <>
       <div className="relative">
         <Navbar />
-        <div className="w-[100%] h-[400px]">
+        {/* <div className="w-[100%] h-[400px]">
           <img src={wallpaper} alt="wallpaper" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-        </div>
+        </div> */}
         <div className="mt-20 w-9/12 mx-auto">
           <Outlet />
         </div>

@@ -68,14 +68,11 @@ export default function Sidebar() {
               </div>
             </div>
             <hr className="my-4 md:min-w-full" />
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Layout Pages
-            </h6>
             <ul className="md:flex-col md:min-w-full flex flex-col list-none p-0">
               <li className="items-center">
                 <NavLink
                   className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
+                    `text-xs uppercase py-1 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
                     }`
                   }
                   to="/admin/dashboard"
@@ -87,39 +84,9 @@ export default function Sidebar() {
                   Workers Status
                 </NavLink>
               </li>
-              <li className="items-center">
-                <NavLink
-                  className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? '' : isActive ? 'text-blue-500' : 'text-black'
-                    }`
-                  }
-                  to="/admin/settings"
-                >
-                  <FiSettings
-                    fontSize={18}
-                    className={'mr-2 text-sm ' + (window.location.pathname === '/admin/settings' ? '' : 'opacity-75')}
-                  />
-                  Settings
-                </NavLink>
-              </li>
-              <li className="items-center">
-                <NavLink
-                  className={({ isActive, isPending }) =>
-                    `text-xs uppercase py-3 font-bold flex items-center hover:opacity-60  ${isPending ? 'text-black' : isActive ? 'text-blue-500' : 'text-black'
-                    }`
-                  }
-                  to="/admin/tables"
-                >
-                  <HiOutlineTable
-                    fontSize={18}
-                    className={'mr-2 text-sm ' + (window.location.pathname === '/admin/tables' ? '' : 'opacity-75')}
-                  />
-                  Tables
-                </NavLink>
-              </li>
             </ul>
-            <hr className="my-4 md:min-w-full" />
-            <h6 className="md:min-w-full text-blueGray-500 text-sm uppercase font-bold block pt-1 pb-4 no-underline">
+            <hr className="my-2 md:min-w-full" />
+            <h6 className="md:min-w-full text-blueGray-500 text-sm uppercase font-bold block py-3 no-underline">
               User Management
             </h6>
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 p-0">

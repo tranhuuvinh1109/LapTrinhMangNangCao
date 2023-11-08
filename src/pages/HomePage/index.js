@@ -11,6 +11,9 @@ const HomePage = () => {
 
   return (
     <div>
+      <div className="w-[100%] h-[400px] mb-4">
+        <img src={wallpaper} alt="wallpaper" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
       <div className="w-[1000px] mx-[125px] text-[19px] text-[#444] leading-9">
         <h2 className="text-[44px] font-normal mb-7">What is a Convolutional Neural Network?</h2>
         <p>

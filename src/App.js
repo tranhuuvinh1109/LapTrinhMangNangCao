@@ -14,7 +14,7 @@ import {
   ProjectDetail,
 } from './pages';
 import { Toaster } from 'react-hot-toast';
-import UserProject from './pages/UserProject';
+import ManageProject from './pages/ManageProject';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
         </Route>
         <Route path="/admin" element={<LayoutAdmin />}>
           <Route path="dashboard" element={<DashboardAdmin />} />
-          <Route path="projects" element={<UserProject />} />
+          <Route path="projects" element={<ManageProject />} />
           <Route path="users" element={<UserMember />} />
         </Route>
         <Route path="auth" element={<AuthPage />} />
