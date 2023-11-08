@@ -5,12 +5,30 @@ import gif2 from '../../assets/gifs/convlayer_detailedview_demo.gif';
 import wallpaper from '../../assets/images/1426870.png';
 import './HomePage.css';
 import { useSelector } from 'react-redux';
+import { FaHeadSideVirus } from 'react-icons/fa6';
 
 const HomePage = () => {
   const project = useSelector((state) => state.project);
 
+
+
+  const scrollToChooseFile = () => {
+    const chooseFileElement = document.getElementById('main-content');
+
+    if (chooseFileElement) {
+      chooseFileElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div>
+      <div
+        className="button-container text-white gap-2"
+        onClick={scrollToChooseFile}
+      >
+        <FaHeadSideVirus className='text-3xl' />
+        TRAIN NOW!!
+      </div>
       <div className="w-[100%] h-[400px] mb-4">
         <img src={wallpaper} alt="wallpaper" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
@@ -129,9 +147,11 @@ const HomePage = () => {
           convolutional layer. See if you can follow the example above!
         </p>
       </div>
-      <ChooseFile />
-      <div>
-        <TableProjects projects={project.project} className="" />
+      <div id="main-content">
+        <ChooseFile />
+        <div className="mb-[100px]">
+          <TableProjects projects={project.project} className="" />
+        </div>
       </div>
     </div>
   );
