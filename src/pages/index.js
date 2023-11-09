@@ -10,6 +10,7 @@ import { default as ManageProject } from './ManageProject';
 import { default as ManualCode } from './ManualCode';
 import { default as ProjectDetail } from './ProjectDetail';
 import { default as LoadingPage } from './LoadingPage';
+import { default as UserDetail } from './UserDetail';
 
 export {
   HomePage,
@@ -24,4 +25,5 @@ export {
   ManageProject,
   ProjectDetail,
   LoadingPage,
+  UserDetail,
 };

@@ -12,6 +12,7 @@ import {
   ManualCode,
   ContactPage,
   ProjectDetail,
+  UserDetail,
 } from './pages';
 import { Toaster } from 'react-hot-toast';
 import ManageProject from './pages/ManageProject';
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="user/dashboard" element={<DashboardUser />} />
           <Route path="user/manual_code" element={<ManualCode />} />
+          <Route path="user/:id" element={<UserDetail />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="project/:id" element={<ProjectDetail />} />
         </Route>
