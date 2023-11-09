@@ -14,16 +14,21 @@ const DashboardAdmin = () => {
 
   const webServer = useRef(null);
 
-  const handleClickCheckWorker = async () => {
-    console.log(1);
-    const res = await manageAPI.getWorkerStatus();
-    if (res.status === 200) {
-      toast.success('Worker 1 is running ...');
-      setWorker1Status(true);
-    } else {
-      toast.error('Worker 1 inactived ...');
-      setWorker1Status(false);
-    }
+  const handleClickCheckWorker = () => {
+    fetch('https://server-deploy-xr7n.onrender.com/api/user_manage/check-worker/')
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success('Worker 1 is running ...');
+          setWorker1Status(true);
+        } else {
+          toast.error('Worker 1 inactived ...');
+          setWorker1Status(false);
+        }
+      })
+      .catch((err) => {
+        toast.error('Worker 1 inactived ...');
+        console.error(err);
+      });
   };
 
   return (

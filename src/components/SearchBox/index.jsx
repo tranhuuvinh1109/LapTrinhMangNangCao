@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Avatar, Divider } from 'antd';
 import { BiSearchAlt } from 'react-icons/bi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
@@ -18,11 +18,31 @@ const SearchBox = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [resultValue, setResultValue] = useState(null);
+  const [showResult, setShowResult] = useState(true);
+
   const debouncedInputValue = useDebounce(searchValue);
+
+  const searchBoxRef = useRef(null);
 
   const handleChangeInput = (e) => {
     setSearchValue(e.target.value);
   };
+
+  const handleClickOutside = (event) => {
+    if (searchBoxRef.current && !searchBoxRef.current.contains(event.target)) {
+      setShowResult(false);
+    } else {
+      console.log('in side');
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, []);
 
   useEffect(() => {
     if (!debouncedInputValue.trim()) {
@@ -48,9 +68,15 @@ const SearchBox = () => {
   }, [debouncedInputValue]);
 
   return (
-    <div className="search-box">
+    <div className="search-box" ref={searchBoxRef}>
       <div className="input-box">
-        <input type="text" placeholder="Search..." value={searchValue} onChange={handleChangeInput} />
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchValue}
+          onChange={handleChangeInput}
+          onFocus={() => setShowResult(true)}
+        />
         {isLoading ? (
           <span className="icon-search">
             <AiOutlineLoading3Quarters className=" animate-spin" />
@@ -59,7 +85,7 @@ const SearchBox = () => {
           <BiSearchAlt className="icon-search" />
         )}
       </div>
-      {resultValue && (
+      {showResult && resultValue && (
         <div className="search-value shadow-xl px-4 py-2">
           <Divider orientation="left">
             <h6 className="text-xl">User</h6>

@@ -94,7 +94,7 @@ const UserDetail = () => {
 
     useEffect(() => {
         getManageUserByID(id);
-    }, []);
+    }, [id]);
 
     return (
         <div>
