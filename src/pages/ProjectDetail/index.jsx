@@ -113,7 +113,7 @@ const ProjectDetail = () => {
       <div className="shadow-2xl mt-8">
         <div className="bg-slate-200 text-slate-500 font-medium flex pt-6 pl-4 pb-2">
           <div className="w-1/12 flex justify-center">Id</div>
-          <div className="w-2/12 flex justify-center">Id</div>
+          <div className="w-2/12 flex justify-center">Project Name</div>
           <div className="w-2/12 px-2 flex justify-center">Status</div>
           <div className="w-3/12 px-2 flex justify-center">Progress</div>
           <div className="w-2/12 flex justify-center">Link Drive</div>
